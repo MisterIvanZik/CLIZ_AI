@@ -12,11 +12,14 @@
 
 CC	=	gcc
 
-SRC	=	src/main.c						\
-		src/init/init_window.c			\
+SRC	=	src/main.c	\
+		src/init/init_window.c	\
+		src/homepage/homepage.c	\
 		src/homepage/draw_homepage.c	\
-		src/homepage/homepage.c			\
-		src/events/handle_events.c		\
+		src/homepage/events_homepage.c	\
+		src/login/login_page.c	\
+		src/login/draw_login_page.c	\
+		src/events/handle_events.c	\
 		src/chatbot/api/api.c			\
 		src/chatbot/destroy/destroy.c   \
 		src/chatbot/events/events.c		\
@@ -28,6 +31,8 @@ SRC	=	src/main.c						\
 		src/chatbot/utils.c
 
 LIB	=	lib/set_functions.c	\
+		lib/create_functions.c	\
+		lib/destroy_functions.c	\
 
 OBJ	=	$(SRC:.c=.o) $(LIB:.c=.o)
 
