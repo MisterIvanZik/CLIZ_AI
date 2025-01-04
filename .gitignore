@@ -1,0 +1,5 @@
+cliz_ai
+*.o
+*.a
+*.c~
+.vscode
