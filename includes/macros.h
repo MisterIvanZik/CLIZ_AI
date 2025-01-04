@@ -17,5 +17,7 @@
     #define WINDOW cliz->window->Window
     #define HOMEPAGE "./assets/images/homepage.jpg"
     #define FONT "./assets/fonts/peach.ttf"
+    #define SETFONT setfont(FONT)
+    #define MOUSE_POS sfMouse_getPositionRenderWindow(WINDOW)
 
 #endif

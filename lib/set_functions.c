@@ -45,3 +45,14 @@ sfSprite *setsprite(sfTexture *texture)
     sfSprite_setTexture(sprite, texture, sfTrue);
     return sprite;
 }
+
+sfFont *setfont(char *filepath)
+{
+    sfFont *savefile_font = sfFont_createFromFile(filepath);
+
+    if (savefile_font == NULL) {
+        printf("%s: Unable to open font\n", filepath);
+        exit(84);
+    }
+    return savefile_font;
+}

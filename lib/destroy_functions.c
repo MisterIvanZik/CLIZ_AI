@@ -1,12 +1,12 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   draw_homepage.c                                           :+:       :+:    :+: :+:    :+:    :+:        */
+/*   destroy_functions.c                                       :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: lisika <lisika@myges.fr>                            +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2025/01/03 21:45:14 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2025/01/03 21:45:14 by lisika               ########## ########   ######## ###########         */
+/*   Created: 2025/01/03 22:02:25 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2025/01/03 22:02:25 by lisika               ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
@@ -14,9 +14,8 @@
 #include "macros.h"
 #include "struct.h"
 
-void draw_homepage(cliz_t *cliz)
+void destroyButton(button_t *button)
 {
-    sfRenderWindow_clear(WINDOW, sfWhite);
-    sfRenderWindow_drawSprite(WINDOW,
-    cliz->window->backSprite, NULL);
+    sfText_destroy(button->text);
+    sfRectangleShape_destroy(button->rec);
 }

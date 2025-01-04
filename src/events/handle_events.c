@@ -25,17 +25,10 @@ static void close_window(cliz_t *cliz)
 
 int handle_events(cliz_t *cliz)
 {
-    sfVector2i mousePos;
-
     while (sfRenderWindow_pollEvent(WINDOW, &cliz->window->event)) {
         close_window(cliz);
-        if (cliz->window->event.type == sfEvtMouseButtonPressed) {
-            mousePos = sfMouse_getPositionRenderWindow(WINDOW);
-            if (mousePos.x >= 365 && mousePos.x <= 650 &&
-                mousePos.y >= 800 && mousePos.y <= 880) {
-                sfRenderWindow_close(WINDOW);
-            }
-        }
+        if (cliz->window->event.type == sfEvtMouseButtonPressed)
+            events_homepage(cliz);
     }
     return 0;
 }

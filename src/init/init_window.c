@@ -29,5 +29,6 @@ window_t *init_window(window_t *window)
     window->backScale = set_window_size(window->windowSize,
     window->backTexture, window->backSprite);
     window->mousePos = sfMouse_getPositionRenderWindow(window->Window);
+    window->statePage = HOME_PAGE;
     return window;
 }
