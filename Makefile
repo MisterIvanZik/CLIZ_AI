@@ -13,13 +13,18 @@
 CC	=	gcc
 
 SRC	=	src/main.c	\
-		src/init/init_window.c	\
 		src/homepage/homepage.c	\
+		src/homepage/init_homepage.c	\
+		src/homepage/handle_events.c	\
 		src/homepage/draw_homepage.c	\
 		src/homepage/events_homepage.c	\
-		src/login/login_page.c	\
+		src/homepage/destroy_homepage.c	\
+		src/login/init_login_page.c	\
 		src/login/draw_login_page.c	\
-		src/events/handle_events.c	\
+		src/login/events_login.c	\
+		src/login/input_user.c	\
+		src/login/authentification_user.c	\
+		src/login/destroy_login_page.c	\
 		src/chatbot/api/api.c			\
 		src/chatbot/destroy/destroy.c   \
 		src/chatbot/events/events.c		\
@@ -48,10 +53,8 @@ CPPFLAGS	=	-I includes/
 
 BIN_NAME	=	cliz_ai
 
-DEBUG_FLAGS =	-g3
-
 all:	$(OBJ)
-	$(CC) -o $(BIN_NAME) $(OBJ) $(CSFML_FLAGS) $(DEBUG_FLAGS) $(CURL_FLAGS) $(JSON_FLAGS) $(C_FLAGS)
+	$(CC) -o $(BIN_NAME) $(OBJ) $(CSFML_FLAGS) $(CURL_FLAGS) $(JSON_FLAGS) $(C_FLAGS)
 
 clean:
 	rm -f $(OBJ)
@@ -59,13 +62,11 @@ clean:
 fclean:	clean
 	rm -f $(BIN_NAME)
 
-re: fclean all
-
-debug_valgrind: CFLAGS += $(DEBUG_FLAGS)
+debug_valgrind: CFLAGS += -g3
 debug_valgrind: fclean all
 
-debug_asan: CFLAGS += $(DEBUG_FLAGS) -fsanitize=address
+debug_asan: CFLAGS += -g3 -fsanitize=address
 debug_asan: LDFLAGS += -fsanitize=address
 debug_asan: fclean all
 
-.PHONY: clean fclean re
+re:     fclean all
