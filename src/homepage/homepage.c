@@ -16,14 +16,14 @@
 #include "prototype.h"
 #include "chatbot.h"
 
-void draw_current_page(cliz_t *cliz)
+static void draw_current_page(cliz_t *cliz)
 {
     switch (cliz->window->statePage) {
         case HOME_PAGE:
             draw_homepage(cliz);
             break;
         case CHATBOT_PAGE:
-            // initAiInterface();
+            initAiInterface();
             break;
         case SIGN_UP_PAGE:
             // Draw sign up page
@@ -38,17 +38,14 @@ void draw_current_page(cliz_t *cliz)
 
 void homepage(cliz_t *cliz)
 {
-    cliz->window = init_window(cliz->window);
-    cliz->login = login_page(cliz->login);
+    cliz->window = init_homepage(cliz->window);
+    cliz->login = init_login_page(cliz->login);
+
     while (sfRenderWindow_isOpen(WINDOW)) {
         handle_events(cliz);
         draw_current_page(cliz);
         sfRenderWindow_display(WINDOW);
     }
-    destroyButton(cliz->login->email);
-    destroyButton(cliz->login->password);
-    sfText_destroy(cliz->login->login);
-    sfSprite_destroy(cliz->window->backSprite);
-    sfTexture_destroy(cliz->window->backTexture);
-    sfRenderWindow_destroy(WINDOW);
+    destroy_login_page(cliz->login);
+    destroy_homepage(cliz->window);
 }

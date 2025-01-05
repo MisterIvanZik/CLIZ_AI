@@ -1,12 +1,12 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   init_window.c                                             :+:       :+:    :+: :+:    :+:    :+:        */
+/*   init_login_page.c                                              :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: lisika <lisika@myges.fr>                            +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2025/01/03 21:23:11 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2025/01/03 21:23:11 by lisika               ########## ########   ######## ###########         */
+/*   Created: 2025/01/04 14:40:56 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2025/01/04 14:40:56 by lisika               ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
@@ -15,20 +15,18 @@
 #include "struct.h"
 #include "prototype.h"
 
-window_t *init_window(window_t *window)
+login_t *init_login_page(login_t *login)
 {
-    window = malloc(sizeof(window_t));
-    if (window == NULL)
+    login = malloc(sizeof(login_t));
+
+    if (login == NULL)
         return NULL;
-    window->VideoMode = sfVideoMode_getDesktopMode();
-    window->Window = sfRenderWindow_create(window->VideoMode, WINDOW_NAME,
-    sfClose | sfResize, NULL);
-    window->windowSize = sfRenderWindow_getSize(window->Window);
-    window->backTexture = settexture(HOMEPAGE);
-    window->backSprite = setsprite(window->backTexture);
-    window->backScale = set_window_size(window->windowSize,
-    window->backTexture, window->backSprite);
-    window->mousePos = sfMouse_getPositionRenderWindow(window->Window);
-    window->statePage = HOME_PAGE;
-    return window;
+    login->login = createText("LOGIN", 40, (sfVector2f){850, 100}, sfBlack);
+    login->email = createButton((sfVector2f){700, 300}, sfBlack, "email or username", sfRed);
+    login->password = createButton((sfVector2f){700, 500}, sfBlack, "password", sfRed);
+    login->message_text = createText("", 30, (sfVector2f){700, 600}, sfBlack);
+    login->email_input[0] = '\0';
+    login->password_input[0] = '\0';
+    login->is_email_selected = true;
+    return login;
 }

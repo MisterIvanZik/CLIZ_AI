@@ -1,12 +1,12 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   draw_login_page.c                                         :+:       :+:    :+: :+:    :+:    :+:        */
+/*   destroy_login_page.c                                      :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: lisika <lisika@myges.fr>                            +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2025/01/04 14:37:58 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2025/01/04 14:37:58 by lisika               ########## ########   ######## ###########         */
+/*   Created: 2025/01/06 00:45:03 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2025/01/06 00:45:03 by lisika               ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
@@ -15,14 +15,13 @@
 #include "struct.h"
 #include "prototype.h"
 
-void draw_login_page(cliz_t *cliz)
+void destroy_login_page(login_t *login)
 {
-    sfRenderWindow_clear(WINDOW, sfWhite);
-    sfRenderWindow_drawRectangleShape(WINDOW, cliz->login->email->rec, NULL);
-    sfRenderWindow_drawRectangleShape(WINDOW, cliz->login->password->rec, NULL);
-    sfRenderWindow_drawText(WINDOW, cliz->login->login, NULL);
-    sfRenderWindow_drawText(WINDOW, cliz->login->email->text, NULL);
-    sfRenderWindow_drawText(WINDOW, cliz->login->password->text, NULL);
-    sfRenderWindow_drawText(WINDOW, cliz->login->message_text, NULL);
-    sfRenderWindow_display(WINDOW);
+    sfSprite_destroy(login->buttonSprite);
+    sfTexture_destroy(login->buttonTexture);
+    destroyButton(login->email);
+    destroyButton(login->password);
+    sfText_destroy(login->login);
+    sfText_destroy(login->message_text);
+    free(login);
 }

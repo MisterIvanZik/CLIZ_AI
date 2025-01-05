@@ -1,12 +1,12 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   draw_login_page.c                                         :+:       :+:    :+: :+:    :+:    :+:        */
+/*   handle_events.c                                           :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: lisika <lisika@myges.fr>                            +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2025/01/04 14:37:58 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2025/01/04 14:37:58 by lisika               ########## ########   ######## ###########         */
+/*   Created: 2025/01/03 22:06:12 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2025/01/03 22:06:12 by lisika               ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
@@ -15,14 +15,28 @@
 #include "struct.h"
 #include "prototype.h"
 
-void draw_login_page(cliz_t *cliz)
+void close_window(cliz_t *cliz)
 {
-    sfRenderWindow_clear(WINDOW, sfWhite);
-    sfRenderWindow_drawRectangleShape(WINDOW, cliz->login->email->rec, NULL);
-    sfRenderWindow_drawRectangleShape(WINDOW, cliz->login->password->rec, NULL);
-    sfRenderWindow_drawText(WINDOW, cliz->login->login, NULL);
-    sfRenderWindow_drawText(WINDOW, cliz->login->email->text, NULL);
-    sfRenderWindow_drawText(WINDOW, cliz->login->password->text, NULL);
-    sfRenderWindow_drawText(WINDOW, cliz->login->message_text, NULL);
-    sfRenderWindow_display(WINDOW);
+    if (EVENT.type == sfEvtClosed || (
+        EVENT.type == sfEvtKeyPressed &&
+        EVENT.key.code == sfKeyEscape))
+        sfRenderWindow_close(WINDOW);
+}
+
+int handle_events(cliz_t *cliz)
+{
+    while (sfRenderWindow_pollEvent(WINDOW, &EVENT)) {
+        close_window(cliz);
+        switch (cliz->window->statePage) {
+            case HOME_PAGE:
+                handle_homepage_events(cliz, EVENT);
+                break;
+            case LOGIN_PAGE:
+                handle_login_events(cliz, EVENT);
+                break;
+            default:
+                break;
+        }
+    }
+    return 0;
 }

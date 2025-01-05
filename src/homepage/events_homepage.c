@@ -37,7 +37,7 @@ static int get_clicked_button(sfVector2i mouse_pos, Switch_Page *cliked_button)
     return 0;
 }
 
-void events_homepage(cliz_t *cliz)
+static void events_homepage(cliz_t *cliz)
 {
     sfVector2i mouse_pos = MOUSE_POS;
     Switch_Page clicked_button;
@@ -57,4 +57,10 @@ void events_homepage(cliz_t *cliz)
         default:
             break;
     }
+}
+
+void handle_homepage_events(cliz_t *cliz, sfEvent event)
+{
+    if (event.type == sfEvtMouseButtonPressed)
+        events_homepage(cliz);
 }

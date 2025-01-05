@@ -29,8 +29,10 @@ void handle_key_press(chatbot_t *interface, sfKeyCode key)
 {
     if (key == sfKeyReturn && interface->input.isActive)
         send_message(interface);
-    else if (key == sfKeyEscape)
+    else if (key == sfKeyEscape) {
+        exit(0);
         sfRenderWindow_close(interface->window);
+    }
 }
 
 void handle_chatbot_events(chatbot_t *interface)

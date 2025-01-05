@@ -1,12 +1,12 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   login_page.c                                              :+:       :+:    :+: :+:    :+:    :+:        */
+/*   init_homepage.c                                             :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: lisika <lisika@myges.fr>                            +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2025/01/04 14:40:56 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2025/01/04 14:40:56 by lisika               ########## ########   ######## ###########         */
+/*   Created: 2025/01/03 21:23:11 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2025/01/03 21:23:11 by lisika               ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
@@ -15,13 +15,20 @@
 #include "struct.h"
 #include "prototype.h"
 
-login_t *login_page(login_t *login)
+window_t *init_homepage(window_t *window)
 {
-    login = malloc(sizeof(login_t));
-    if (login == NULL)
+    window = malloc(sizeof(window_t));
+    if (window == NULL)
         return NULL;
-    login->login = createText("LOGIN", 40, (sfVector2f){850, 100}, sfBlack);
-    login->email = createButton((sfVector2f){700, 300}, sfBlack, "email or username", sfRed);
-    login->password = createButton((sfVector2f){700, 500}, sfBlack, "password", sfRed);
-    return login;
+    window->VideoMode = sfVideoMode_getDesktopMode();
+    window->Window = sfRenderWindow_create(window->VideoMode, WINDOW_NAME,
+    sfClose | sfResize, NULL);
+    window->windowSize = sfRenderWindow_getSize(window->Window);
+    window->backTexture = settexture(HOMEPAGE);
+    window->backSprite = setsprite(window->backTexture);
+    window->backScale = set_window_size(window->windowSize,
+    window->backTexture, window->backSprite);
+    window->mousePos = sfMouse_getPositionRenderWindow(window->Window);
+    window->statePage = HOME_PAGE;
+    return window;
 }
