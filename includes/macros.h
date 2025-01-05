@@ -16,8 +16,11 @@
     #define WINDOW_NAME "CLIZ_AI"
     #define WINDOW cliz->window->Window
     #define HOMEPAGE "./assets/images/homepage.jpg"
-    #define FONT "./assets/fonts/peach.ttf"
+    #define FONT "./assets/fonts/CreatoDisplay-Regular.otf"
     #define SETFONT setfont(FONT)
+    #define EVENT cliz->window->event
     #define MOUSE_POS sfMouse_getPositionRenderWindow(WINDOW)
+    #define LOGIN_BUTTON "./assets/images/login_button.png"
+    #define LOGIN_ICON "./assets/images/login_icon.png"
 
 #endif
