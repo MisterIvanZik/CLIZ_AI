@@ -64,6 +64,7 @@ void send_message(chatbot_t *interface);
 void draw_chatbot(chatbot_t *interface);
 void destroy(chatbot_t *interface);
 void handle_chatbot_events(chatbot_t *interface);
+float calculate_message_height(sfText *messageText, char *content);
 void draw_messages(chatbot_t *interface);
 void handle_text_input(chatbot_t *interface, sfEvent event);
 void destroy(chatbot_t *interface);

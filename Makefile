@@ -19,13 +19,13 @@ SRC = src/main.c \
       src/homepage/draw_homepage.c \
       src/homepage/events_homepage.c \
       src/homepage/destroy_homepage.c \
-	  src/sign_up/init_sign_up_page.c	\
-	  src/sign_up/handle_sign_input.c	\
-	  src/sign_up/handle_sign_events.c	\
-	  src/sign_up/check_sign_up_user.c	\
-	  src/sign_up/sign_up.c	\
-	  src/sign_up/draw_sign_up_page.c	\
-	  src/sign_up/destroy_sign_up_page.c	\
+	src/sign_up/init_sign_up_page.c	\
+	src/sign_up/handle_sign_input.c	\
+	src/sign_up/handle_sign_events.c	\
+	src/sign_up/check_sign_up_user.c	\
+	src/sign_up/sign_up.c	\
+	src/sign_up/draw_sign_up_page.c	\
+	src/sign_up/destroy_sign_up_page.c	\
       src/login/init_login_page.c \
       src/login/handle_login_events.c \
       src/login/handle_login_input.c \
