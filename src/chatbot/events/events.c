@@ -35,6 +35,31 @@ void handle_key_press(chatbot_t *interface, sfKeyCode key)
     }
 }
 
+void handle_scroll(chatbot_t *interface, sfEvent event)
+{
+    if (event.mouseWheelScroll.wheel == sfMouseVerticalWheel) {
+        float messagesHeight = 0;
+        sfText *text = sfText_create();
+        sfText_setFont(text, interface->font);
+        sfText_setCharacterSize(text, 18);
+        for (int i = 0; i < interface->messageCount; i++)
+            messagesHeight += calculate_message_height(text, interface->messages[i].content);
+        sfText_destroy(text);
+        interface->scroll -= event.mouseWheelScroll.delta * 20;
+        if (interface->scroll < 0) {
+            interface->scroll = 0;
+        }
+    }
+}
+
+void handle_mouse_events(chatbot_t *interface, sfEvent event)
+{
+    if (event.mouseButton.button == sfMouseLeft) {
+        sfVector2i mousePos = {event.mouseButton.x, event.mouseButton.y};
+        handle_mouse_click(interface, mousePos);
+    }
+}
+
 void handle_chatbot_events(chatbot_t *interface)
 {
     sfEvent event;
@@ -45,16 +70,16 @@ void handle_chatbot_events(chatbot_t *interface)
                 sfRenderWindow_close(interface->window);
                 break;
             case sfEvtMouseButtonPressed:
-                if (event.mouseButton.button == sfMouseLeft) {
-                    sfVector2i mousePos = {event.mouseButton.x, event.mouseButton.y};
-                    handle_mouse_click(interface, mousePos);
-                }
+                handle_mouse_events(interface, event);
                 break;
             case sfEvtTextEntered:
                 handle_text_input(interface, event);
                 break;
             case sfEvtKeyPressed:
                 handle_key_press(interface, event.key.code);
+                break;
+            case sfEvtMouseWheelScrolled:
+                handle_scroll(interface, event);
                 break;
         }
     }

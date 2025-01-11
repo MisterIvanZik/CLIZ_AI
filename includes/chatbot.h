@@ -40,6 +40,7 @@ typedef struct input_s {
 typedef struct message_s{
     char content[1000];
     sfBool isUser;
+    sfRectangleShape *background;
 } message_t;
 
 typedef struct chatbot_s {
@@ -51,6 +52,7 @@ typedef struct chatbot_s {
     sfText *displayText;
     sfRectangleShape *sendButton;
     sfText *sendButtonText;
+    int scroll;
 } chatbot_t;
 
 size_t callback(void *ptr, size_t size, size_t nmemb, void *stream);

@@ -50,5 +50,6 @@ chatbot_t *create_chat_interface(void)
     interface->sendButton = createSendButton();
     interface->sendButtonText = createSendButtonText(interface->font, interface->sendButton);
     interface->messageCount = 0;
+    interface->scroll = 0;
     return interface;
 }

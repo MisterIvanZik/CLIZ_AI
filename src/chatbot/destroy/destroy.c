@@ -26,6 +26,11 @@ void destroy(chatbot_t *interface)
         sfRectangleShape_destroy(interface->sendButton);
     if (interface->sendButtonText)
         sfText_destroy(interface->sendButtonText);
+    for (int i = 0; i < interface->messageCount; i++) {
+        if (interface->messages[i].background) {
+            sfRectangleShape_destroy(interface->messages[i].background);
+        }
+    }
     free(interface);
     curl_global_cleanup();
 }
