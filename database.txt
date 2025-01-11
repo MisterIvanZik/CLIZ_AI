@@ -1,1 +1,2 @@
-clara;ivan
+clara:clara@gmail:12345678
+ivan:ivan@gmail:87654321

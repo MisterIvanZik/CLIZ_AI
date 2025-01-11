@@ -43,19 +43,29 @@ typedef struct button_s {
 } button_t;
 
 typedef struct user_s {
+    char *name;
     char *email;
     char *password;
     struct user_s *next;
 } user_t;
 
+typedef struct sign_up_s {
+    sfText *sign_up;
+    button_t *name;
+    button_t *email;
+    button_t *password;
+    sfText *message_text;
+    sfText *text;
+    user_t *user;
+    bool is_name_selected;
+    bool is_email_selected;
+    bool is_password_selected;
+} sign_up_t;
+
 typedef struct login_s {
     sfText *login;
     button_t *email;
     button_t *password;
-    sfSprite *buttonSprite;
-    sfTexture *buttonTexture;
-    sfVector2f buttonScale;
-    sfVector2f buttonPos;
     sfText *message_text;
     char email_input[50];
     char password_input[50];
@@ -66,7 +76,8 @@ typedef struct cliz_s {
     window_t *window;
     login_t *login;
     button_t *button;
-    user_t *user;
+    sign_up_t *sign;
+    user_t *user_list;
 } cliz_t;
 
 #endif

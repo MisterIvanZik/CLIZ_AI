@@ -39,10 +39,18 @@ void destroy_homepage(window_t *window);
 
 login_t *init_login_page(login_t *login);
 void check_login_user(cliz_t *cliz);
-void process_user_input(login_t *login, sfEvent event);
+void handle_login_input(login_t *login, sfEvent event);
 void handle_login_events(cliz_t *cliz, sfEvent event);
 void draw_login_page(cliz_t *cliz);
 void destroy_login_page(login_t *login);
+
+sign_up_t *init_sign_up_page(sign_up_t *sign_up);
+int sign_up(FILE *file, cliz_t *cliz);
+void check_sign_up_user(cliz_t *cliz);
+void handle_sign_input(sign_up_t *sign, sfEvent event);
+void handle_sign_events(cliz_t *cliz, sfEvent event);
+void draw_sign_up_page(cliz_t *cliz);
+void destroy_sign_up_page(sign_up_t *sign);
 
 void homepage(cliz_t *cliz);
 
