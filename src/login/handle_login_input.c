@@ -1,7 +1,7 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   input_user.c                                              :+:       :+:    :+: :+:    :+:    :+:        */
+/*   handle_login_input.c                                      :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: lisika <lisika@myges.fr>                            +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
@@ -47,7 +47,7 @@ static void handle_password_input(login_t *login, sfEvent event)
     sfText_setString(login->password->text, input_content);
 }
 
-void process_user_input(login_t *login, sfEvent event)
+void handle_login_input(login_t *login, sfEvent event)
 {
     if (login->is_email_selected) {
         handle_email_input(login, event);

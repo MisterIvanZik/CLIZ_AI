@@ -1,7 +1,7 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   events_login.c                                            :+:       :+:    :+: :+:    :+:    :+:        */
+/*   handle_login_events.c                                     :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: lisika <lisika@myges.fr>                            +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
@@ -18,7 +18,7 @@
 static void handle_login_input_events(cliz_t *cliz, sfEvent event)
 {
     if (event.type == sfEvtTextEntered) {
-        process_user_input(cliz->login, event);
+        handle_login_input(cliz->login, event);
     } else if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab) {
         cliz->login->is_email_selected = !cliz->login->is_email_selected;
     } else if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEnter) {
