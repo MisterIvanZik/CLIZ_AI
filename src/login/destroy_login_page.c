@@ -17,8 +17,6 @@
 
 void destroy_login_page(login_t *login)
 {
-    sfSprite_destroy(login->buttonSprite);
-    sfTexture_destroy(login->buttonTexture);
     destroyButton(login->email);
     destroyButton(login->password);
     sfText_destroy(login->login);

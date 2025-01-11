@@ -34,6 +34,9 @@ int handle_events(cliz_t *cliz)
             case LOGIN_PAGE:
                 handle_login_events(cliz, EVENT);
                 break;
+            case SIGN_UP_PAGE:
+                handle_sign_events(cliz, EVENT);
+                break;
             default:
                 break;
         }

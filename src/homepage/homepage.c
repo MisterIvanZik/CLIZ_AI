@@ -26,7 +26,7 @@ static void draw_current_page(cliz_t *cliz)
             initAiInterface();
             break;
         case SIGN_UP_PAGE:
-            // Draw sign up page
+            draw_sign_up_page(cliz);
             break;
         case LOGIN_PAGE:
             draw_login_page(cliz);
@@ -40,12 +40,15 @@ void homepage(cliz_t *cliz)
 {
     cliz->window = init_homepage(cliz->window);
     cliz->login = init_login_page(cliz->login);
+    cliz->sign = init_sign_up_page(cliz->sign);
+    cliz->user_list = NULL;
 
     while (sfRenderWindow_isOpen(WINDOW)) {
         handle_events(cliz);
         draw_current_page(cliz);
         sfRenderWindow_display(WINDOW);
     }
+    destroy_sign_up_page(cliz->sign);
     destroy_login_page(cliz->login);
     destroy_homepage(cliz->window);
 }
