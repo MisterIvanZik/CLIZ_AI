@@ -40,11 +40,11 @@ void draw_single_message(chatbot_t *ai, sfText *messageText, char *content, floa
 void draw_messages(chatbot_t *ai)
 {
     sfText *messageText = sfText_create();
-    sfText_setFont(messageText, ai->font);
-    sfText_setCharacterSize(messageText, 18);
     float maxWidthMess = 0;
     int currentPos = 40;
 
+    sfText_setFont(messageText, ai->font);
+    sfText_setCharacterSize(messageText, 18);
     for (int i = 0; i < ai->messageCount; i++) {
         maxWidthMess = calculate_message_height(messageText, ai->messages[i].content);
         draw_single_message(ai, messageText, ai->messages[i].content, 30, currentPos);
