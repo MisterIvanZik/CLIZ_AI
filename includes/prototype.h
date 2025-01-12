@@ -45,12 +45,14 @@ void draw_login_page(cliz_t *cliz);
 void destroy_login_page(login_t *login);
 
 sign_up_t *init_sign_up_page(sign_up_t *sign_up);
+void load_users_from_file(cliz_t *cliz, const char *filename);
 int sign_up(FILE *file, cliz_t *cliz);
 void check_sign_up_user(cliz_t *cliz);
 void handle_sign_input(sign_up_t *sign, sfEvent event);
 void handle_sign_events(cliz_t *cliz, sfEvent event);
 void draw_sign_up_page(cliz_t *cliz);
 void destroy_sign_up_page(sign_up_t *sign);
+void destroy_user_list(user_t *head);
 
 void homepage(cliz_t *cliz);
 

@@ -26,10 +26,12 @@ SRC = src/main.c \
 	src/sign_up/sign_up.c	\
 	src/sign_up/draw_sign_up_page.c	\
 	src/sign_up/destroy_sign_up_page.c	\
+      src/sign_up/destroy_user_list.c     \
       src/login/init_login_page.c \
       src/login/handle_login_events.c \
       src/login/handle_login_input.c \
       src/login/login.c \
+      src/login/load_users_from_file.c    \
       src/login/draw_login_page.c \
       src/login/destroy_login_page.c \
       src/chatbot/api/api.c \

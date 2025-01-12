@@ -13,8 +13,6 @@
 #ifndef STRUCT_H
     #define STRUCT_H
     #include "include.h"
-    #define EMAIL_BUFFER 100
-    #define PASSWORD_BUFFER 12
 
 typedef enum {
     HOME_PAGE,
@@ -67,8 +65,7 @@ typedef struct login_s {
     button_t *email;
     button_t *password;
     sfText *message_text;
-    char email_input[50];
-    char password_input[50];
+    user_t *user;
     bool is_email_selected;
 } login_t;
 
