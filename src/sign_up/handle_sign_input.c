@@ -24,7 +24,7 @@ static void handle_name_input(sign_up_t *sign, sfEvent event)
         if (len > 0) {
             input_content[len - 1] = '\0';
         }
-    } else if (len < 50) {
+    } else if (len < NAME_BUFFER) {
         input_content[len] = (char)event.text.unicode;
         input_content[len + 1] = '\0';
     }
@@ -40,7 +40,7 @@ static void handle_email_input(sign_up_t *sign, sfEvent event)
         if (len > 0) {
             input_content[len - 1] = '\0';
         }
-    } else if (len < 100) {
+    } else if (len < EMAIL_BUFFER) {
         input_content[len] = (char)event.text.unicode;
         input_content[len + 1] = '\0';
     }
@@ -56,7 +56,7 @@ static void handle_password_input(sign_up_t *sign, sfEvent event)
         if (len > 0) {
             input_content[len - 1] = '\0';
         }
-    } else if (len < 50) {
+    } else if (len < PASSWORD_BUFFER) {
         input_content[len] = (char)event.text.unicode;
         input_content[len + 1] = '\0';
     }

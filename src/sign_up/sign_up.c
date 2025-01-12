@@ -57,9 +57,8 @@ int sign_up(FILE *file, cliz_t *cliz)
         }
         current = current->next;
     }
-    if (add_node(&cliz->user_list, new_user->name, new_user->email, new_user->password) != 0) {
+    if (add_node(&cliz->user_list, new_user->name, new_user->email, new_user->password) != 0)
         return 84;
-    }
     fprintf(file, "%s:%s:%s\n", new_user->name, new_user->email, new_user->password);
     return 0;
 }

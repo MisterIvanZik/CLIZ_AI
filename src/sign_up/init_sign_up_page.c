@@ -15,15 +15,15 @@
 #include "struct.h"
 #include "prototype.h"
 
-user_t *init_user(void)
+static user_t *init_user(void)
 {
     user_t *user = malloc(sizeof(user_t));
 
     if (user == NULL)
         return NULL;
-    user->name = malloc(51);
-    user->email = malloc(101);
-    user->password = malloc(51);
+    user->name = malloc(NAME_BUFFER + 1);
+    user->email = malloc(EMAIL_BUFFER + 1);
+    user->password = malloc(PASSWORD_BUFFER + 1);
     if (user->name == NULL || user->email == NULL || user->password == NULL) {
         free(user->name);
         free(user->email);
