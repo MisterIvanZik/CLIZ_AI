@@ -63,13 +63,20 @@ void draw_messages(chatbot_t *ai)
     }
     sfText_destroy(messageText);
 }
+
 void send_message(chatbot_t *ai)
 {
     char *ai_response = NULL;
+    char *special_response = NULL;
 
     if (my_strlen(ai->input.content) > 0) {
         add_message(ai, ai->input.content, sfTrue);
-        if (ai_response = getAiResponse(ai->input.content)) {
+        if (my_strcmp(ai->input.content, "Qui est le meilleur prof de l'ESGI ?") == 0) {
+            special_response = "Monsieur Trancho mais chut c'est un secret !";
+        }
+        if (special_response) {
+            add_message(ai, special_response, sfFalse);
+        } else if (ai_response = getAiResponse(ai->input.content)) {
             add_message(ai, ai_response, sfFalse);
             free(ai_response);
         }
