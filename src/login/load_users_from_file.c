@@ -1,12 +1,12 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   sign_up.c                                                 :+:       :+:    :+: :+:    :+:    :+:        */
+/*   load_users_from_file.c                                    :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: lisika <lisika@myges.fr>                            +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2025/01/11 14:08:55 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2025/01/11 14:08:55 by lisika               ########## ########   ######## ###########         */
+/*   Created: 2025/01/11 23:46:24 by lisika                #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2025/01/11 23:46:24 by lisika               ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
@@ -18,9 +18,9 @@
 static user_t *create_node(char *name, char *email, char *password)
 {
     user_t *new_node = (user_t *)malloc(sizeof(user_t));
-
     if (new_node == NULL)
         return NULL;
+
     new_node->name = strdup(name);
     new_node->email = strdup(email);
     new_node->password = strdup(password);
@@ -46,19 +46,30 @@ static int add_node(user_t **head, char *name, char *email, char *password)
     return 0;
 }
 
-int sign_up(FILE *file, cliz_t *cliz)
+void load_users_from_file(cliz_t *cliz, const char *filename)
 {
-    user_t *current = cliz->user_list;
-    user_t *new_user = cliz->sign->user;
+    char *name = (char *)malloc(NAME_BUFFER * sizeof(char));
+    char *email = (char *)malloc(EMAIL_BUFFER * sizeof(char));
+    char *password = (char *)malloc(PASSWORD_BUFFER * sizeof(char));
+    FILE *file = fopen(filename, "r");
 
-    while (current != NULL) {
-        if (strcmp(current->email, new_user->email) == 0) {
-            return 1;
-        }
-        current = current->next;
+    if (file == NULL) {
+        printf("Erreur : impossible d'ouvrir le fichier %s\n", filename);
+        return;
     }
-    if (add_node(&cliz->user_list, new_user->name, new_user->email, new_user->password) != 0)
-        return 84;
-    fprintf(file, "%s:%s:%s\n", new_user->name, new_user->email, new_user->password);
-    return 0;
+    if (name == NULL || email == NULL || password == NULL) {
+        free(name);
+        free(email);
+        free(password);
+        return;
+    }
+    while (fscanf(file, "%[^:]:%[^:]:%s\n", name, email, password) == 3) {
+        if (add_node(&cliz->user_list, name, email, password) != 0) {
+            printf("Erreur : impossible d'ajouter l'utilisateur %s\n", name);
+        }
+    }
+    fclose(file);
+    free(name);
+    free(email);
+    free(password);
 }

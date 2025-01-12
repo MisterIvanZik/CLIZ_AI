@@ -22,5 +22,8 @@
     #define MOUSE_POS sfMouse_getPositionRenderWindow(WINDOW)
     #define LOGIN_BUTTON "./assets/images/login_button.png"
     #define LOGIN_ICON "./assets/images/login_icon.png"
+    #define NAME_BUFFER 50
+    #define EMAIL_BUFFER 100
+    #define PASSWORD_BUFFER 50
 
 #endif

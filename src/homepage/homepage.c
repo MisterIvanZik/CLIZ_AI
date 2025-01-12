@@ -43,11 +43,13 @@ void homepage(cliz_t *cliz)
     cliz->sign = init_sign_up_page(cliz->sign);
     cliz->user_list = NULL;
 
+    load_users_from_file(cliz, "database.txt");
     while (sfRenderWindow_isOpen(WINDOW)) {
         handle_events(cliz);
         draw_current_page(cliz);
         sfRenderWindow_display(WINDOW);
     }
+    destroy_user_list(cliz->user_list);
     destroy_sign_up_page(cliz->sign);
     destroy_login_page(cliz->login);
     destroy_homepage(cliz->window);

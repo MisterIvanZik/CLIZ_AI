@@ -25,7 +25,6 @@ static int validate_sign_up_fields(user_t *user, sfText *message_text)
         sfText_setString(message_text, "Email invalide !");
         return 1;
     }
-
     if (strlen(user->password) < 8) {
         sfText_setString(message_text, "Le mot de passe doit contenir au moins 8 caractères !");
         return 1;
@@ -45,7 +44,7 @@ static int add_new_user(FILE *file, cliz_t *cliz)
     result = sign_up(file, cliz);
     fclose(file);
     if (result == 0) {
-        cliz->window->statePage = LOGIN_PAGE;
+        cliz->window->statePage = HOME_PAGE;
     } else if (result == 1) {
         sfText_setString(cliz->sign->message_text, "Cet email est déjà utilisé !");
     } else {
