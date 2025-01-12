@@ -15,20 +15,20 @@
 #include "struct.h"
 #include "prototype.h"
 
-window_t *init_homepage(window_t *window)
+homepage_t *init_homepage(homepage_t *homepage, sfVector2u window_size)
 {
-    window = malloc(sizeof(window_t));
-    if (window == NULL)
+    homepage = malloc(sizeof(homepage_t));
+    if (homepage == NULL)
         return NULL;
-    window->VideoMode = sfVideoMode_getDesktopMode();
-    window->Window = sfRenderWindow_create(window->VideoMode, WINDOW_NAME,
-    sfClose | sfResize, NULL);
-    window->windowSize = sfRenderWindow_getSize(window->Window);
-    window->backTexture = settexture(HOMEPAGE);
-    window->backSprite = setsprite(window->backTexture);
-    window->backScale = set_window_size(window->windowSize,
-    window->backTexture, window->backSprite);
-    window->mousePos = sfMouse_getPositionRenderWindow(window->Window);
-    window->statePage = HOME_PAGE;
-    return window;
+    homepage->backTexture = settexture(LIGHT_HOMEPAGE);
+    homepage->backSprite = setsprite(homepage->backTexture);
+    homepage->iconTexture = settexture(MOON_ICON);
+    homepage->iconSprite = setsprite(homepage->iconTexture);
+    homepage->iconPos = (sfVector2f){1800, 40};
+    sfSprite_setPosition(homepage->iconSprite, homepage->iconPos);
+    homepage->backScale = set_window_size(window_size, homepage->backTexture, homepage->backSprite);
+    homepage->sign_text = createText("SIGN_UP", 30, (sfVector2f){900, 750}, sfBlack);
+    homepage->login_text = createText("LOGIN", 30, (sfVector2f){1265, 750}, sfBlack);
+    homepage->is_dark_theme = false;
+    return homepage;
 }

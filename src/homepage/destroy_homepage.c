@@ -15,10 +15,13 @@
 #include "struct.h"
 #include "prototype.h"
 
-void destroy_homepage(window_t *window)
+void destroy_homepage(homepage_t *homepage)
 {
-    sfSprite_destroy(window->backSprite);
-    sfTexture_destroy(window->backTexture);
-    sfRenderWindow_destroy(window->Window);
-    free(window);
+    sfText_destroy(homepage->login_text);
+    sfText_destroy(homepage->sign_text);
+    sfSprite_destroy(homepage->iconSprite);
+    sfTexture_destroy(homepage->iconTexture);
+    sfSprite_destroy(homepage->backSprite);
+    sfTexture_destroy(homepage->backTexture);
+    free(homepage);
 }
