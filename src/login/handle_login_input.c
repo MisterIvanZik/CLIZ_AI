@@ -17,15 +17,15 @@
 
 static void handle_email_input(login_t *login, sfEvent event)
 {
-    char *input_content = login->email_input;
+    char *input_content = login->user->email;
     size_t len = strlen(input_content);
 
     if (event.text.unicode == '\b') {
         if (len > 0)
             input_content[len - 1] = '\0';
     }
-    else if (len < 50) {
-        input_content[len] = event.text.unicode;
+    else if (len < EMAIL_BUFFER) {
+        input_content[len] = (char)event.text.unicode;
         input_content[len + 1] = '\0';
     }
     sfText_setString(login->email->text, input_content);
@@ -33,15 +33,15 @@ static void handle_email_input(login_t *login, sfEvent event)
 
 static void handle_password_input(login_t *login, sfEvent event)
 {
-    char *input_content = login->password_input;
+    char *input_content = login->user->password;
     size_t len = strlen(input_content);
 
     if (event.text.unicode == '\b') {
         if (len > 0)
             input_content[len - 1] = '\0';
     }
-    else if (len < 50) {
-        input_content[len] = event.text.unicode;
+    else if (len < PASSWORD_BUFFER) {
+        input_content[len] = (char)event.text.unicode;
         input_content[len + 1] = '\0';
     }
     sfText_setString(login->password->text, input_content);
