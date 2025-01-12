@@ -71,5 +71,6 @@ void destroy(chatbot_t *interface);
 void initAiInterface(void);
 char *my_strncpy(char *dest, char *src, int n);
 int my_strlen(char *str);
+int my_strcmp(char *s1, char *s2);
 
 #endif
