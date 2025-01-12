@@ -15,13 +15,15 @@
     #include "prototype.h"
     #define WINDOW_NAME "CLIZ_AI"
     #define WINDOW cliz->window->Window
-    #define HOMEPAGE "./assets/images/homepage.jpg"
-    #define FONT "./assets/fonts/CreatoDisplay-Regular.otf"
+    #define WINDOW_SIZE cliz->window->windowSize
+    #define LIGHT_HOMEPAGE "./assets/images/light_homepage.jpeg"
+    #define MOON_ICON "./assets/images/moon_icon.png"
+    #define DARK_HOMEPAGE "./assets/images/dark_homepage.jpeg"
+    #define SUN_ICON "./assets/images/sun_icon.png"
+    #define FONT "./assets/fonts/InterVariable.ttf"
     #define SETFONT setfont(FONT)
     #define EVENT cliz->window->event
     #define MOUSE_POS sfMouse_getPositionRenderWindow(WINDOW)
-    #define LOGIN_BUTTON "./assets/images/login_button.png"
-    #define LOGIN_ICON "./assets/images/login_icon.png"
     #define NAME_BUFFER 50
     #define EMAIL_BUFFER 100
     #define PASSWORD_BUFFER 50

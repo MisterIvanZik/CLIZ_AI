@@ -18,5 +18,9 @@ void draw_homepage(cliz_t *cliz)
 {
     sfRenderWindow_clear(WINDOW, sfWhite);
     sfRenderWindow_drawSprite(WINDOW,
-    cliz->window->backSprite, NULL);
+    cliz->homepage->backSprite, NULL);
+    sfRenderWindow_drawSprite(WINDOW,
+    cliz->homepage->iconSprite, NULL);
+    sfRenderWindow_drawText(WINDOW, cliz->homepage->sign_text, NULL);
+    sfRenderWindow_drawText(WINDOW, cliz->homepage->login_text, NULL);
 }

@@ -18,7 +18,8 @@ typedef enum {
     HOME_PAGE,
     SIGN_UP_PAGE,
     LOGIN_PAGE,
-    CHATBOT_PAGE
+    CHATBOT_PAGE,
+    TOGGLE_THEME
 } Switch_Page;
 
 typedef struct window_s {
@@ -27,10 +28,6 @@ typedef struct window_s {
     sfVector2u windowSize;
     sfEvent event;
     sfVector2i mousePos;
-    sfSprite *backSprite;
-    sfTexture *backTexture;
-    sfVector2f backScale;
-    sfVector2f backPos;
     Switch_Page statePage;
 } window_t;
 
@@ -39,6 +36,20 @@ typedef struct button_s {
     sfText* text;
     sfVector2f textPos;
 } button_t;
+
+typedef struct homepage_s {
+    sfSprite *backSprite;
+    sfTexture *backTexture;
+    sfVector2f backScale;
+    sfText *sign_text;
+    sfText *login_text;
+    sfText *image_text;
+    sfSprite *iconSprite;
+    sfTexture *iconTexture;
+    sfVector2f iconScale;
+    sfVector2f iconPos;
+    bool is_dark_theme;
+} homepage_t;
 
 typedef struct user_s {
     char *name;
@@ -58,6 +69,7 @@ typedef struct sign_up_s {
     bool is_name_selected;
     bool is_email_selected;
     bool is_password_selected;
+    bool is_dark_theme;
 } sign_up_t;
 
 typedef struct login_s {
@@ -67,10 +79,12 @@ typedef struct login_s {
     sfText *message_text;
     user_t *user;
     bool is_email_selected;
+    bool is_dark_theme;
 } login_t;
 
 typedef struct cliz_s {
     window_t *window;
+    homepage_t *homepage;
     login_t *login;
     button_t *button;
     sign_up_t *sign;

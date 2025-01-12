@@ -30,12 +30,15 @@ int my_strlen(char *str);
 char *my_strdup(char *str1);
 int my_strcmp(char *str1, char *str2);
 
-window_t *init_homepage(window_t *window);
+window_t *init_window(window_t *window);
+void destroy_window(window_t *window);
+
+homepage_t *init_homepage(homepage_t *homepage, sfVector2u window_size);
 void close_window(cliz_t *cliz);
 int handle_events(cliz_t *cliz);
 void handle_homepage_events(cliz_t *cliz, sfEvent event);
 void draw_homepage(cliz_t *cliz);
-void destroy_homepage(window_t *window);
+void destroy_homepage(homepage_t *homepage);
 
 login_t *init_login_page(login_t *login);
 void check_login_user(cliz_t *cliz);
