@@ -22,7 +22,7 @@ void check_login_user(cliz_t *cliz)
     user_t *current = cliz->user_list;
 
     if (cliz->user_list == NULL) {
-        sfText_setString(cliz->login->message_text, "Utilisateur inconnu");
+        sfText_setString(cliz->login->message_text, "*Utilisateur inconnu");
         return;
     }
     while (current != NULL) {
@@ -33,5 +33,5 @@ void check_login_user(cliz_t *cliz)
         }
         current = current->next;
     }
-    sfText_setString(cliz->login->message_text, "Email ou mot de passe incorrect !");
+    sfText_setString(cliz->login->message_text, "*Email ou mot de passe incorrect");
 }

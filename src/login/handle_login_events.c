@@ -20,19 +20,17 @@ static void toggle_login_theme(login_t *login)
     if (login->is_dark_theme) {
         login->backTexture = settexture(LIGHT_LOGIN);
         login->iconTexture = settexture(MOON_ICON);
-        sfText_setColor(login->message_text, sfBlack);
         sfText_setColor(login->email->text, sfBlack);
         sfText_setColor(login->password->text, sfBlack);
-        sfRectangleShape_setPosition(login->email->rec, (sfVector2f){665, 480});
-        sfRectangleShape_setSize(login->email->rec, (sfVector2f){420, 75});
-        sfRectangleShape_setPosition(login->password->rec, (sfVector2f){665, 635});
-        sfRectangleShape_setSize(login->password->rec, (sfVector2f){420, 75});
+        sfText_setPosition(login->message_text, (sfVector2f){670, 420});
+        sfText_setPosition(login->email->text, (sfVector2f){665, 480});
+        sfText_setPosition(login->password->text,(sfVector2f){665, 635});
     } else {
         login->backTexture = settexture(DARK_LOGIN);
         login->iconTexture = settexture(SUN_ICON);
-        sfText_setColor(login->message_text, sfWhite);
         sfText_setColor(login->email->text, sfWhite);
         sfText_setColor(login->password->text, sfWhite);
+        sfText_setPosition(login->message_text, (sfVector2f){670, 465});
         sfText_setPosition(login->email->text, (sfVector2f){675, 520});
         sfText_setPosition(login->password->text, (sfVector2f){675, 625});
     }
@@ -54,7 +52,7 @@ static void handle_login_mouse_events(cliz_t *cliz, sfEvent event)
 {
     sfFloatRect select_email = sfRectangleShape_getGlobalBounds(cliz->login->email->rec);
     sfFloatRect select_password = sfRectangleShape_getGlobalBounds(cliz->login->password->rec);
-    sfFloatRect iconBounds = sfSprite_getGlobalBounds(cliz->login->iconSprite); // Vérifier l'icône
+    sfFloatRect iconBounds = sfSprite_getGlobalBounds(cliz->login->iconSprite);
 
     if (event.type == sfEvtMouseButtonPressed) {
         if (sfFloatRect_contains(&select_email, MOUSE_POS.x, MOUSE_POS.y)) {

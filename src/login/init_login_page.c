@@ -51,9 +51,9 @@ login_t *init_login_page(login_t *login, sfVector2u window_size)
     login->iconSprite = setsprite(login->iconTexture);
     login->iconPos = (sfVector2f){1800, 40};
     sfSprite_setPosition(login->iconSprite, login->iconPos);
-    login->email = createButton((sfVector2f){665, 480}, (sfVector2f){420, 75}, "email", sfBlack);
-    login->password = createButton((sfVector2f){665, 635}, (sfVector2f){420, 75}, "password", sfBlack);
-    login->message_text = createText("", 30, (sfVector2f){700, 600}, sfBlack);
+    login->email = createButton((sfVector2f){665, 480}, (sfVector2f){420, 75}, "Email", sfBlack);
+    login->password = createButton((sfVector2f){665, 635}, (sfVector2f){420, 75}, "Password", sfBlack);
+    login->message_text = createText("", 15, (sfVector2f){670, 420}, sfRed);
     login->user = init_user();
     if (login->user == NULL) {
         free(login);
