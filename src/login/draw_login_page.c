@@ -18,7 +18,10 @@
 void draw_login_page(cliz_t *cliz)
 {
     sfRenderWindow_clear(WINDOW, sfWhite);
-    sfRenderWindow_drawText(WINDOW, cliz->login->login, NULL);
+    sfRenderWindow_drawSprite(WINDOW,
+    cliz->login->backSprite, NULL);
+    sfRenderWindow_drawSprite(WINDOW,
+    cliz->login->iconSprite, NULL);
     sfRenderWindow_drawRectangleShape(WINDOW, cliz->login->email->rec, NULL);
     sfRenderWindow_drawRectangleShape(WINDOW, cliz->login->password->rec, NULL);
     sfRenderWindow_drawText(WINDOW, cliz->login->email->text, NULL);

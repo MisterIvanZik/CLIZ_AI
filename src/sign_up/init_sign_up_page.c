@@ -15,6 +15,30 @@
 #include "struct.h"
 #include "prototype.h"
 
+static button_t *createbutton(sfVector2f buttonPos, sfColor buttonOutlineColor, const char *buttonName, sfColor buttonNameColor)
+{
+    button_t *button = malloc(sizeof(button_t));
+
+    if (button == NULL)
+        return NULL;
+    button->rec = sfRectangleShape_create();
+    sfRectangleShape_setSize(button->rec, (sfVector2f){400, 50});
+    sfRectangleShape_setPosition(button->rec, buttonPos);
+    sfRectangleShape_setFillColor(button->rec, sfTransparent);
+    sfRectangleShape_setOutlineThickness(button->rec, 2);
+    sfRectangleShape_setOutlineColor(button->rec, buttonOutlineColor);
+    button->text = sfText_create();
+    button->textPos = (sfVector2f){buttonPos.x, buttonPos.y};
+    sfText_setString(button->text, buttonName);
+    sfText_setFont(button->text, SETFONT);
+    sfText_setCharacterSize(button->text, 24);
+    sfText_setColor(button->text, buttonNameColor);
+    sfText_setPosition(button->text, button->textPos);
+
+    return button;
+}
+
+
 static user_t *init_user(void)
 {
     user_t *user = malloc(sizeof(user_t));
@@ -44,9 +68,9 @@ sign_up_t *init_sign_up_page(sign_up_t *sign_up)
     if (sign_up == NULL)
         return NULL;
     sign_up->sign_up = createText("SIGN_UP", 40, (sfVector2f){850, 50}, sfBlue);
-    sign_up->name = createButton((sfVector2f){700, 100}, sfBlack, "name", sfBlack);
-    sign_up->email = createButton((sfVector2f){700, 300}, sfBlack, "email", sfBlack);
-    sign_up->password = createButton((sfVector2f){700, 500}, sfBlack, "password", sfBlack);
+    sign_up->name = createbutton((sfVector2f){700, 100}, sfBlack, "name", sfBlack);
+    sign_up->email = createbutton((sfVector2f){700, 300}, sfBlack, "email", sfBlack);
+    sign_up->password = createbutton((sfVector2f){700, 500}, sfBlack, "password", sfBlack);
     sign_up->message_text = createText("", 30, (sfVector2f){700, 600}, sfRed);
     sign_up->user = init_user();
     if (sign_up->user == NULL) {

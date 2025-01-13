@@ -22,11 +22,11 @@ homepage_t *init_homepage(homepage_t *homepage, sfVector2u window_size)
         return NULL;
     homepage->backTexture = settexture(LIGHT_HOMEPAGE);
     homepage->backSprite = setsprite(homepage->backTexture);
+    homepage->backScale = set_window_size(window_size, homepage->backTexture, homepage->backSprite);
     homepage->iconTexture = settexture(MOON_ICON);
     homepage->iconSprite = setsprite(homepage->iconTexture);
     homepage->iconPos = (sfVector2f){1800, 40};
     sfSprite_setPosition(homepage->iconSprite, homepage->iconPos);
-    homepage->backScale = set_window_size(window_size, homepage->backTexture, homepage->backSprite);
     homepage->sign_text = createText("SIGN_UP", 30, (sfVector2f){900, 750}, sfBlack);
     homepage->login_text = createText("LOGIN", 30, (sfVector2f){1265, 750}, sfBlack);
     homepage->is_dark_theme = false;

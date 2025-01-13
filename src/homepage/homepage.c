@@ -40,7 +40,7 @@ void homepage(cliz_t *cliz)
 {
     cliz->window = init_window(cliz->window);
     cliz->homepage = init_homepage(cliz->homepage, WINDOW_SIZE);
-    cliz->login = init_login_page(cliz->login);
+    cliz->login = init_login_page(cliz->login, WINDOW_SIZE);
     cliz->sign = init_sign_up_page(cliz->sign);
     cliz->user_list = NULL;
 
