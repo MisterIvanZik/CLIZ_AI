@@ -23,10 +23,8 @@ static void toggle_login_theme(login_t *login)
         sfText_setColor(login->message_text, sfBlack);
         sfText_setColor(login->email->text, sfBlack);
         sfText_setColor(login->password->text, sfBlack);
-        sfRectangleShape_setPosition(login->email->rec, (sfVector2f){665, 480});
-        sfRectangleShape_setSize(login->email->rec, (sfVector2f){420, 75});
-        sfRectangleShape_setPosition(login->password->rec, (sfVector2f){665, 635});
-        sfRectangleShape_setSize(login->password->rec, (sfVector2f){420, 75});
+        sfText_setPosition(login->email->text, (sfVector2f){665, 480});
+        sfText_setPosition(login->password->text,(sfVector2f){665, 635});
     } else {
         login->backTexture = settexture(DARK_LOGIN);
         login->iconTexture = settexture(SUN_ICON);
