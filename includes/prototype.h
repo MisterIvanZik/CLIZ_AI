@@ -21,7 +21,7 @@ sfTexture *settexture(char *filepath);
 sfSprite *setsprite(sfTexture *texture);
 sfFont *setfont(char *filepath);
 
-button_t *createButton(sfVector2f buttonPos, sfColor buttonOutlineColor, const char *buttonName, sfColor buttonNameColor);
+button_t *createButton(sfVector2f buttonPos, sfVector2f buttonSize, const char *buttonName, sfColor buttonNameColor);
 sfText* createText(const char* string, unsigned int textSize, sfVector2f textPos, sfColor textColor);
 void destroyButton(button_t *button);
 
@@ -40,7 +40,7 @@ void handle_homepage_events(cliz_t *cliz, sfEvent event);
 void draw_homepage(cliz_t *cliz);
 void destroy_homepage(homepage_t *homepage);
 
-login_t *init_login_page(login_t *login);
+login_t *init_login_page(login_t *login, sfVector2u window_size);
 void check_login_user(cliz_t *cliz);
 void handle_login_input(login_t *login, sfEvent event);
 void handle_login_events(cliz_t *cliz, sfEvent event);

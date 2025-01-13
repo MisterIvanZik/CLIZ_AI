@@ -41,13 +41,13 @@ typedef struct homepage_s {
     sfSprite *backSprite;
     sfTexture *backTexture;
     sfVector2f backScale;
-    sfText *sign_text;
-    sfText *login_text;
-    sfText *image_text;
     sfSprite *iconSprite;
     sfTexture *iconTexture;
     sfVector2f iconScale;
     sfVector2f iconPos;
+    sfText *sign_text;
+    sfText *login_text;
+    sfText *image_text;
     bool is_dark_theme;
 } homepage_t;
 
@@ -73,7 +73,13 @@ typedef struct sign_up_s {
 } sign_up_t;
 
 typedef struct login_s {
-    sfText *login;
+    sfSprite *backSprite;
+    sfTexture *backTexture;
+    sfVector2f backScale;
+    sfSprite *iconSprite;
+    sfTexture *iconTexture;
+    sfVector2f iconScale;
+    sfVector2f iconPos;
     button_t *email;
     button_t *password;
     sfText *message_text;
