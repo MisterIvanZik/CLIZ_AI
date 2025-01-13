@@ -14,18 +14,18 @@
 #include "macros.h"
 #include "struct.h"
 
-button_t *createButton(sfVector2f buttonPos, sfColor buttonOutlineColor, const char *buttonName, sfColor buttonNameColor)
+button_t *createButton(sfVector2f buttonPos, sfVector2f buttonSize, const char *buttonName, sfColor buttonNameColor)
 {
     button_t *button = malloc(sizeof(button_t));
 
     if (button == NULL)
         return NULL;
     button->rec = sfRectangleShape_create();
-    sfRectangleShape_setSize(button->rec, (sfVector2f){400, 50});
+    sfRectangleShape_setSize(button->rec, buttonSize);
     sfRectangleShape_setPosition(button->rec, buttonPos);
     sfRectangleShape_setFillColor(button->rec, sfTransparent);
     sfRectangleShape_setOutlineThickness(button->rec, 2);
-    sfRectangleShape_setOutlineColor(button->rec, buttonOutlineColor);
+    sfRectangleShape_setOutlineColor(button->rec, sfTransparent);
     button->text = sfText_create();
     button->textPos = (sfVector2f){buttonPos.x, buttonPos.y};
     sfText_setString(button->text, buttonName);
