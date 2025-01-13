@@ -15,30 +15,6 @@
 #include "struct.h"
 #include "prototype.h"
 
-static button_t *createbutton(sfVector2f buttonPos, sfColor buttonOutlineColor, const char *buttonName, sfColor buttonNameColor)
-{
-    button_t *button = malloc(sizeof(button_t));
-
-    if (button == NULL)
-        return NULL;
-    button->rec = sfRectangleShape_create();
-    sfRectangleShape_setSize(button->rec, (sfVector2f){400, 50});
-    sfRectangleShape_setPosition(button->rec, buttonPos);
-    sfRectangleShape_setFillColor(button->rec, sfTransparent);
-    sfRectangleShape_setOutlineThickness(button->rec, 2);
-    sfRectangleShape_setOutlineColor(button->rec, buttonOutlineColor);
-    button->text = sfText_create();
-    button->textPos = (sfVector2f){buttonPos.x, buttonPos.y};
-    sfText_setString(button->text, buttonName);
-    sfText_setFont(button->text, SETFONT);
-    sfText_setCharacterSize(button->text, 24);
-    sfText_setColor(button->text, buttonNameColor);
-    sfText_setPosition(button->text, button->textPos);
-
-    return button;
-}
-
-
 static user_t *init_user(void)
 {
     user_t *user = malloc(sizeof(user_t));
@@ -62,16 +38,22 @@ static user_t *init_user(void)
     return user;
 }
 
-sign_up_t *init_sign_up_page(sign_up_t *sign_up)
+sign_up_t *init_sign_up_page(sign_up_t *sign_up, sfVector2u window_size)
 {
     sign_up = malloc(sizeof(sign_up_t));
     if (sign_up == NULL)
         return NULL;
-    sign_up->sign_up = createText("SIGN_UP", 40, (sfVector2f){850, 50}, sfBlue);
-    sign_up->name = createbutton((sfVector2f){700, 100}, sfBlack, "name", sfBlack);
-    sign_up->email = createbutton((sfVector2f){700, 300}, sfBlack, "email", sfBlack);
-    sign_up->password = createbutton((sfVector2f){700, 500}, sfBlack, "password", sfBlack);
-    sign_up->message_text = createText("", 30, (sfVector2f){700, 600}, sfRed);
+    sign_up->backTexture = settexture(LIGHT_SIGN_UP);
+    sign_up->backSprite = setsprite(sign_up->backTexture);
+    sign_up->backScale = set_window_size(window_size, sign_up->backTexture, sign_up->backSprite);
+    sign_up->iconTexture = settexture(MOON_ICON);
+    sign_up->iconSprite = setsprite(sign_up->iconTexture);
+    sign_up->iconPos = (sfVector2f){1800, 40};
+    sfSprite_setPosition(sign_up->iconSprite, sign_up->iconPos);
+    sign_up->name = createButton((sfVector2f){750, 410}, (sfVector2f){440, 65}, "Username", sfBlack);
+    sign_up->email = createButton((sfVector2f){750, 530}, (sfVector2f){440, 65}, "Email", sfBlack);
+    sign_up->password = createButton((sfVector2f){750, 615}, (sfVector2f){440, 65}, "Password", sfBlack);
+    sign_up->message_text = createText("", 15, (sfVector2f){755, 375}, sfRed);
     sign_up->user = init_user();
     if (sign_up->user == NULL) {
         free(sign_up);

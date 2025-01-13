@@ -47,7 +47,7 @@ void handle_login_events(cliz_t *cliz, sfEvent event);
 void draw_login_page(cliz_t *cliz);
 void destroy_login_page(login_t *login);
 
-sign_up_t *init_sign_up_page(sign_up_t *sign_up);
+sign_up_t *init_sign_up_page(sign_up_t *sign_up, sfVector2u window_size);
 void load_users_from_file(cliz_t *cliz, const char *filename);
 int sign_up(FILE *file, cliz_t *cliz);
 void check_sign_up_user(cliz_t *cliz);

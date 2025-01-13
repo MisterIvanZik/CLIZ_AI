@@ -15,6 +15,32 @@
 #include "struct.h"
 #include "prototype.h"
 
+static void toggle_sign_theme(sign_up_t *sign)
+{
+    if (sign->is_dark_theme) {
+        sign->backTexture = settexture(LIGHT_SIGN_UP);
+        sign->iconTexture = settexture(MOON_ICON);
+        sfText_setColor(sign->name->text, sfBlack);
+        sfText_setColor(sign->email->text, sfBlack);
+        sfText_setColor(sign->password->text, sfBlack);
+        sfText_setPosition(sign->name->text, (sfVector2f){750, 410});
+        sfText_setPosition(sign->email->text, (sfVector2f){750, 530});
+        sfText_setPosition(sign->password->text, (sfVector2f){750, 615});
+    } else {
+        sign->backTexture = settexture(DARK_SIGN_UP);
+        sign->iconTexture = settexture(SUN_ICON);
+        sfText_setColor(sign->name->text, sfWhite);
+        sfText_setColor(sign->email->text, sfWhite);
+        sfText_setColor(sign->password->text, sfWhite);
+        sfText_setPosition(sign->name->text, (sfVector2f){760, 440});
+        sfText_setPosition(sign->email->text, (sfVector2f){760, 535});
+        sfText_setPosition(sign->password->text, (sfVector2f){760, 630});
+    }
+    sfSprite_setTexture(sign->backSprite, sign->backTexture, sfTrue);
+    sfSprite_setTexture(sign->iconSprite, sign->iconTexture, sfTrue);
+    sign->is_dark_theme = !sign->is_dark_theme;
+}
+
 static void switch_to_next_field(sign_up_t *sign)
 {
     if (sign->is_name_selected) {
@@ -35,33 +61,34 @@ static void handle_sign_input_events(cliz_t *cliz, sfEvent event)
         handle_sign_input(cliz->sign, event);
     } else if (event.type == sfEvtKeyPressed && event.key.code == sfKeyTab) {
         switch_to_next_field(cliz->sign);
-    } else if (event.key.code == sfKeyEnter) {
-        check_sign_up_user(cliz);
     }
 }
 
-static void handle_sign_mouse_events(sign_up_t *sign, sfEvent event, sfRenderWindow *window)
+static void handle_sign_mouse_events(cliz_t *cliz, sfEvent event)
 {
-    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
-    sfFloatRect select_name = sfText_getGlobalBounds(sign->name->text);
-    sfFloatRect select_email = sfText_getGlobalBounds(sign->email->text);
-    sfFloatRect select_password = sfText_getGlobalBounds(sign->password->text);
+    sfFloatRect select_name = sfText_getGlobalBounds(cliz->sign->name->text);
+    sfFloatRect select_email = sfText_getGlobalBounds(cliz->sign->email->text);
+    sfFloatRect select_password = sfText_getGlobalBounds(cliz->sign->password->text);
+    sfFloatRect iconBounds = sfSprite_getGlobalBounds(cliz->login->iconSprite);
 
     if (event.type == sfEvtMouseButtonPressed) {
-        if (sfFloatRect_contains(&select_name, mouse_pos.x, mouse_pos.y)) {
-            sign->is_name_selected = true;
-            sign->is_email_selected = false;
-            sign->is_password_selected = false;
-        }
-        else if (sfFloatRect_contains(&select_email, mouse_pos.x, mouse_pos.y)) {
-            sign->is_name_selected = false;
-            sign->is_email_selected = true;
-            sign->is_password_selected = false;
-        }
-        else if (sfFloatRect_contains(&select_password, mouse_pos.x, mouse_pos.y)) {
-            sign->is_name_selected = false;
-            sign->is_email_selected = false;
-            sign->is_password_selected = true;
+        if (sfFloatRect_contains(&select_name, MOUSE_POS.x, MOUSE_POS.y)) {
+            cliz->sign->is_name_selected = true;
+            cliz->sign->is_email_selected = false;
+            cliz->sign->is_password_selected = false;
+        } else if (sfFloatRect_contains(&select_email, MOUSE_POS.x, MOUSE_POS.y)) {
+            cliz->sign->is_name_selected = false;
+            cliz->sign->is_email_selected = true;
+            cliz->sign->is_password_selected = false;
+        } else if (sfFloatRect_contains(&select_password, MOUSE_POS.x, MOUSE_POS.y)) {
+            cliz->sign->is_name_selected = false;
+            cliz->sign->is_email_selected = false;
+            cliz->sign->is_password_selected = true;
+        } else if (sfFloatRect_contains(&iconBounds, MOUSE_POS.x, MOUSE_POS.y)) {
+            toggle_sign_theme(cliz->sign);
+        }  else if (MOUSE_POS.x >= 745 && MOUSE_POS.x <= 1180 &&
+            MOUSE_POS.y >= 730 && MOUSE_POS.y <= 775) {
+                check_sign_up_user(cliz);
         }
     }
 }
@@ -69,5 +96,5 @@ static void handle_sign_mouse_events(sign_up_t *sign, sfEvent event, sfRenderWin
 void handle_sign_events(cliz_t *cliz, sfEvent event)
 {
     handle_sign_input_events(cliz, event);
-    handle_sign_mouse_events(cliz->sign, event, WINDOW);
+    handle_sign_mouse_events(cliz, event);
 }

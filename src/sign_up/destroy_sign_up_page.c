@@ -32,8 +32,11 @@ void destroy_sign_up_page(sign_up_t *sign)
     destroyButton(sign->name);
     destroyButton(sign->email);
     destroyButton(sign->password);
-    sfText_destroy(sign->sign_up);
     sfText_destroy(sign->message_text);
+    sfSprite_destroy(sign->iconSprite);
+    sfTexture_destroy(sign->iconTexture);
+    sfSprite_destroy(sign->backSprite);
+    sfTexture_destroy(sign->backTexture);
     destroy_user(sign->user);
     free(sign);
 }

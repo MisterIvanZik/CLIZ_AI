@@ -18,9 +18,11 @@
     #define WINDOW_SIZE cliz->window->windowSize
     #define LIGHT_HOMEPAGE "./assets/images/light_homepage.jpeg"
     #define DARK_HOMEPAGE "./assets/images/dark_homepage.jpeg"
-    #define MOON_ICON "./assets/images/moon_icon.png"
     #define LIGHT_LOGIN "./assets/images/light_login.jpg"
     #define DARK_LOGIN "./assets/images/dark_login.png"
+    #define LIGHT_SIGN_UP "./assets/images/light_sign_up.png"
+    #define DARK_SIGN_UP "./assets/images/dark_sign_up.png"
+    #define MOON_ICON "./assets/images/moon_icon.png"
     #define SUN_ICON "./assets/images/sun_icon.png"
     #define FONT "./assets/fonts/InterVariable.ttf"
     #define SETFONT setfont(FONT)

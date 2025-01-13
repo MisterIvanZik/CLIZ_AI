@@ -18,7 +18,10 @@
 void draw_sign_up_page(cliz_t *cliz)
 {
     sfRenderWindow_clear(WINDOW, sfWhite);
-    sfRenderWindow_drawText(WINDOW, cliz->sign->sign_up, NULL);
+    sfRenderWindow_drawSprite(WINDOW,
+    cliz->sign->backSprite, NULL);
+    sfRenderWindow_drawSprite(WINDOW,
+    cliz->sign->iconSprite, NULL);
     sfRenderWindow_drawRectangleShape(WINDOW, cliz->sign->name->rec, NULL);
     sfRenderWindow_drawRectangleShape(WINDOW, cliz->sign->email->rec, NULL);
     sfRenderWindow_drawRectangleShape(WINDOW, cliz->sign->password->rec, NULL);
