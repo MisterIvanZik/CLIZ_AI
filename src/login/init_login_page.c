@@ -38,15 +38,21 @@ static user_t *init_user(void)
     return user;
 }
 
-login_t *init_login_page(login_t *login)
+login_t *init_login_page(login_t *login, sfVector2u window_size)
 {
     login = malloc(sizeof(login_t));
 
     if (login == NULL)
         return NULL;
-    login->login = createText("LOGIN", 40, (sfVector2f){850, 100}, sfBlack);
-    login->email = createButton((sfVector2f){700, 300}, sfBlack, "email or username", sfRed);
-    login->password = createButton((sfVector2f){700, 500}, sfBlack, "password", sfRed);
+    login->backTexture = settexture(LIGHT_LOGIN);
+    login->backSprite = setsprite(login->backTexture);
+    login->backScale = set_window_size(window_size, login->backTexture, login->backSprite);
+    login->iconTexture = settexture(MOON_ICON);
+    login->iconSprite = setsprite(login->iconTexture);
+    login->iconPos = (sfVector2f){1800, 40};
+    sfSprite_setPosition(login->iconSprite, login->iconPos);
+    login->email = createButton((sfVector2f){665, 480}, (sfVector2f){420, 75}, "email", sfBlack);
+    login->password = createButton((sfVector2f){665, 635}, (sfVector2f){420, 75}, "password", sfBlack);
     login->message_text = createText("", 30, (sfVector2f){700, 600}, sfBlack);
     login->user = init_user();
     if (login->user == NULL) {
@@ -54,5 +60,6 @@ login_t *init_login_page(login_t *login)
         return NULL;
     }
     login->is_email_selected = true;
+    login->is_dark_theme = false;
     return login;
 }

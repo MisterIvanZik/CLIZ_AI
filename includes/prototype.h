@@ -21,7 +21,7 @@ sfTexture *settexture(char *filepath);
 sfSprite *setsprite(sfTexture *texture);
 sfFont *setfont(char *filepath);
 
-button_t *createButton(sfVector2f buttonPos, sfColor buttonOutlineColor, const char *buttonName, sfColor buttonNameColor);
+button_t *createButton(sfVector2f buttonPos, sfVector2f buttonSize, const char *buttonName, sfColor buttonNameColor);
 sfText* createText(const char* string, unsigned int textSize, sfVector2f textPos, sfColor textColor);
 void destroyButton(button_t *button);
 
@@ -40,14 +40,14 @@ void handle_homepage_events(cliz_t *cliz, sfEvent event);
 void draw_homepage(cliz_t *cliz);
 void destroy_homepage(homepage_t *homepage);
 
-login_t *init_login_page(login_t *login);
+login_t *init_login_page(login_t *login, sfVector2u window_size);
 void check_login_user(cliz_t *cliz);
 void handle_login_input(login_t *login, sfEvent event);
 void handle_login_events(cliz_t *cliz, sfEvent event);
 void draw_login_page(cliz_t *cliz);
 void destroy_login_page(login_t *login);
 
-sign_up_t *init_sign_up_page(sign_up_t *sign_up);
+sign_up_t *init_sign_up_page(sign_up_t *sign_up, sfVector2u window_size);
 void load_users_from_file(cliz_t *cliz, const char *filename);
 int sign_up(FILE *file, cliz_t *cliz);
 void check_sign_up_user(cliz_t *cliz);

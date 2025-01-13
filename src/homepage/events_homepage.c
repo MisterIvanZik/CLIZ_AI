@@ -20,8 +20,8 @@ static void toggle_theme(homepage_t *homepage)
     if (homepage->is_dark_theme) {
         homepage->backTexture = settexture(LIGHT_HOMEPAGE);
         homepage->iconTexture = settexture(MOON_ICON);
-        sfText_setColor(homepage->sign_text, sfBlack);
-        sfText_setColor(homepage->login_text, sfBlack);
+        sfText_setColor(homepage->sign_text, sfWhite);
+        sfText_setColor(homepage->login_text, sfWhite);
         sfText_setPosition(homepage->sign_text, (sfVector2f){900, 750});
         sfText_setPosition(homepage->login_text, (sfVector2f){1265, 750});
     } else {

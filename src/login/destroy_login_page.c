@@ -29,8 +29,11 @@ void destroy_login_page(login_t *login)
 {
     destroyButton(login->email);
     destroyButton(login->password);
-    sfText_destroy(login->login);
     sfText_destroy(login->message_text);
+    sfSprite_destroy(login->iconSprite);
+    sfTexture_destroy(login->iconTexture);
+    sfSprite_destroy(login->backSprite);
+    sfTexture_destroy(login->backTexture);
     destroy_user(login->user);
     free(login);
 }
