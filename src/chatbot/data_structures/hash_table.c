@@ -82,7 +82,7 @@ char *hash_search(hash_table_t *table, const char *question)
     index = hash_function(question);
     current = table->items[index];
     while (current) {
-        if (my_strcmp(current->question, question) == 0) {
+        if (strcmp(current->question, question) == 0) {
             if (current_time - current->timestamp <= CACHE_EXPIRATION) // Vérifier si l'entrée n'a pas expiré
                 return current->response;
             return NULL;
@@ -135,9 +135,9 @@ void hash_destroy(hash_table_t *table)
         while (current) {
             tmp = current;
             current = current->next;
-            free(temp->question);
-            free(temp->response);
-            free(temp);
+            free(tmp->question);
+            free(tmp->response);
+            free(tmp);
         }
     }
     free(table->items);
