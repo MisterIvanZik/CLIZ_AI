@@ -10,10 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "include.h"
-#include "macros.h"
-#include "struct.h"
-#include "prototype.h"
+#include "prototypes.h"
 
 static void toggle_sign_theme(sign_up_t *sign)
 {

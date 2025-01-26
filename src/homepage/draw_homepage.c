@@ -10,9 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "include.h"
-#include "macros.h"
-#include "struct.h"
+#include "prototypes.h"
 
 void draw_homepage(cliz_t *cliz)
 {

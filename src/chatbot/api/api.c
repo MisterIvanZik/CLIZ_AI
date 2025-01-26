@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "chatbot.h"
+#include "prototypes.h"
 
 // Réception des données de la réponse HTTP
 size_t callback(void *receivedData, size_t sizeOfOneElement, size_t numberOfElements, void *userData)
@@ -79,8 +79,14 @@ char *extractAiResponse(char *data)
 }
 
 // Fonction principale pour interagir avec l'API
-char *getAiResponse(char *userInput)
+char *getAiResponse(chatbot_t *interface, char *userInput)
 {
+    // Vérifier d'abord dans le cache
+    char *cached_response = hash_search(interface->responseCache, userInput);
+
+    if (cached_response != NULL)
+        return strdup(cached_response);  // Retourner une copie de la réponse du cache
+    // Si pas dans le cache, appeler l'API
     CURL *curl = curl_easy_init(); // crée un objet CURL -> ouvrir un navigateur pour faire une requête à un site web
     char *data = NULL;
     size_t dataSize = 0;
@@ -107,6 +113,8 @@ char *getAiResponse(char *userInput)
     free(jsonPayload);
     free(data);
     if (aiResponse) {
+        // Stocker la réponse dans le cache avant de la retourner
+        hash_insert(interface->responseCache, userInput, aiResponse);
         return aiResponse;
     } else {
         printf("Désolé, je n'ai pas pu obtenir de réponse.\n");

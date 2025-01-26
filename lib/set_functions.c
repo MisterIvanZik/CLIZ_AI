@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "include.h"
+#include "prototypes.h"
 
 sfVector2f set_window_size(sfVector2u windowSize,
     sfTexture *texture, sfSprite *sprite)

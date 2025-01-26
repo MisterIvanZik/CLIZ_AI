@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "chatbot.h"
+#include "prototypes.h"
 
 input_t create_input_box(sfFont *font)
 {

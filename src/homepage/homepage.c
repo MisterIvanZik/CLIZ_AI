@@ -10,11 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "include.h"
-#include "macros.h"
-#include "struct.h"
-#include "prototype.h"
-#include "chatbot.h"
+#include "prototypes.h"
 
 static void draw_current_page(cliz_t *cliz)
 {

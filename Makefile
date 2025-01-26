@@ -21,12 +21,12 @@ SRC = src/main.c                                \
       src/homepage/draw_homepage.c              \
       src/homepage/events_homepage.c            \
       src/homepage/destroy_homepage.c           \
-      src/sign_up/init_sign_up_page.c	          \
-      src/sign_up/handle_sign_input.c	          \
-      src/sign_up/handle_sign_events.c	        \
-      src/sign_up/check_sign_up_user.c	        \
-      src/sign_up/sign_up.c	                    \
-      src/sign_up/draw_sign_up_page.c	          \
+      src/sign_up/init_sign_up_page.c	      \
+      src/sign_up/handle_sign_input.c	      \
+      src/sign_up/handle_sign_events.c	      \
+      src/sign_up/check_sign_up_user.c	      \
+      src/sign_up/sign_up.c	                  \
+      src/sign_up/draw_sign_up_page.c	      \
       src/sign_up/destroy_sign_up_page.c	      \
       src/sign_up/destroy_user_list.c           \
       src/login/init_login_page.c               \
@@ -44,7 +44,8 @@ SRC = src/main.c                                \
       src/chatbot/interface/init.c              \
       src/chatbot/interface/draw.c              \
       src/chatbot/interface/input.c             \
-      src/chatbot/utils.c
+      src/chatbot/utils.c                       \
+      src/chatbot/data_structures/hash_table.c
 
 LIB = lib/set_functions.c                       \
       lib/create_functions.c                    \
@@ -58,7 +59,7 @@ CURL_FLAGS = -lcurl
 
 JSON_FLAGS = -ljson-c
 
-CPPFLAGS = -I includes/
+CPPFLAGS = -I header/
 
 BIN_NAME = cliz_ai
 

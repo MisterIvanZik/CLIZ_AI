@@ -10,9 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "include.h"
-#include "macros.h"
-#include "struct.h"
+#include "prototypes.h"
 
 void destroyButton(button_t *button)
 {

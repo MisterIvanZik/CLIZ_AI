@@ -10,10 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "include.h"
-#include "macros.h"
-#include "struct.h"
-#include "prototype.h"
+#include "prototypes.h"
 
 void close_window(cliz_t *cliz)
 {

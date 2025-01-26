@@ -10,10 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "include.h"
-#include "macros.h"
-#include "struct.h"
-#include "prototype.h"
+#include "prototypes.h"
 
 homepage_t *init_homepage(homepage_t *homepage, sfVector2u window_size)
 {
@@ -22,7 +19,7 @@ homepage_t *init_homepage(homepage_t *homepage, sfVector2u window_size)
         return NULL;
     homepage->backTexture = settexture(LIGHT_HOMEPAGE);
     homepage->backSprite = setsprite(homepage->backTexture);
-    homepage->backScale = set_window_size(window_size, homepage->backTexture, homepage->backSprite);
+    homepage->backScale = set_window_size(window_size, homepage->backTexture, homepage->backSprite), 0;
     homepage->iconTexture = settexture(MOON_ICON);
     homepage->iconSprite = setsprite(homepage->iconTexture);
     homepage->iconPos = (sfVector2f){1800, 40};

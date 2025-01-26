@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "chatbot.h"
+#include "prototypes.h"
 
 void draw_chatbot(chatbot_t *interface)
 {

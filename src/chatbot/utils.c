@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "chatbot.h"
+#include "prototypes.h"
 
 char *my_strncpy(char *dest, char *src, int n)
 {

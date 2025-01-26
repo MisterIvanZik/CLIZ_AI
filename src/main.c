@@ -9,10 +9,8 @@
 /*   Updated: 2024/12/31 00:52:13 by lisika               ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
-#include "include.h"
-#include "macros.h"
-#include "struct.h"
-#include "prototype.h"
+
+#include "prototypes.h"
 
 int main(void)
 {

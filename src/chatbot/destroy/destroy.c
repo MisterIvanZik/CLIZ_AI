@@ -10,10 +10,14 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "chatbot.h"
+#include "prototypes.h"
 
-void destroy(chatbot_t *interface)
+void destroy_interface(chatbot_t *interface)
 {
+    if (!interface)
+        return;
+    if (interface->responseCache)
+        hash_destroy(interface->responseCache);
     if (interface->window)
         sfRenderWindow_destroy(interface->window);
     if (interface->font)

@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "chatbot.h"
+#include "prototypes.h"
 
 void add_message(chatbot_t *ai, char *content, sfBool isUser)
 {
@@ -76,7 +76,7 @@ void send_message(chatbot_t *ai)
         }
         if (special_response) {
             add_message(ai, special_response, sfFalse);
-        } else if (ai_response = getAiResponse(ai->input.content)) {
+        } else if (ai_response = getAiResponse(ai, ai->input.content)) {
             add_message(ai, ai_response, sfFalse);
             free(ai_response);
         }

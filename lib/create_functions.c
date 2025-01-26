@@ -10,9 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "include.h"
-#include "macros.h"
-#include "struct.h"
+#include "prototypes.h"
 
 button_t *createButton(sfVector2f buttonPos, sfVector2f buttonSize, const char *buttonName, sfColor buttonNameColor)
 {

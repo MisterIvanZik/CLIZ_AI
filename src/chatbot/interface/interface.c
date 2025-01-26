@@ -10,8 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "chatbot.h"
-#include "macros.h"
+#include "prototypes.h"
 
 sfRectangleShape *createSendButton(void)
 {
@@ -44,6 +43,11 @@ chatbot_t *create_chat_interface(void)
 
     if (!interface)
         return NULL;
+    interface->responseCache = hash_create();
+    if (!interface->responseCache) {
+        free(interface);
+        return NULL;
+    }
     interface->window = sfRenderWindow_create(mode, "CLIZ AI", sfResize | sfClose, NULL);
     interface->font = sfFont_createFromFile(FONT);
     interface->input = create_input_box(interface->font);

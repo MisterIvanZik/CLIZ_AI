@@ -1,26 +1,29 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   init.c                                                    :+:       :+:    :+: :+:    :+:    :+:        */
+/*   includes.h                                                :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: ivan <ivan@myges.fr>                                +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2024/12/29 13:27:23 by ivan                  #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2024/12/29 13:27:23 by ivan                 ########## ########   ######## ###########         */
+/*   Created: 2025/01/26 03:45:44 by ivan                  #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2025/01/26 14:42:51 by ivan                 ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "prototypes.h"
+#ifndef INCLUDES_H_
+    #define INCLUDES_H_
+    /* Bibliothèques standards */
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <unistd.h>
+    #include <stdbool.h>
+    #include <time.h>
 
-void initAiInterface(void)
-{
-    chatbot_t *interface = create_chat_interface();
+    /* Bibliothèques externes */
+    #include <SFML/Graphics.h>
+    #include <SFML/Audio.h>
+    #include <curl/curl.h>
+    #include <json-c/json.h>
 
-    if (interface && interface->window)
-        add_message(interface, "Bien le bonjour ! Je suis votre assistant Cliz AI ! Comment puis-je vous aider aujourd'hui?", sfFalse);
-    while (sfRenderWindow_isOpen(interface->window)) {
-        handle_chatbot_events(interface);
-        draw_chatbot(interface);
-    }
-    destroy_interface(interface);
-}
+#endif

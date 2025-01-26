@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "chatbot.h"
+#include "prototypes.h"
 
 void handle_mouse_click(chatbot_t *interface, sfVector2i mousePos)
 {
