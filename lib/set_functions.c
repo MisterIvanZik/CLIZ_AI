@@ -28,7 +28,7 @@ sfTexture *settexture(char *filepath)
     sfTexture *savefile_texture = sfTexture_createFromFile(filepath, NULL);
 
     if (!savefile_texture) {
-        printf("%s: Unable to open file\n", filepath);
+        my_printf("%s: Unable to open file\n", filepath);
         exit(84);
     }
     return savefile_texture;
@@ -39,7 +39,7 @@ sfSprite *setsprite(sfTexture *texture)
     sfSprite *sprite = sfSprite_create();
 
     if (!sprite) {
-        printf("Unable to open sprite\n");
+        my_printf("Unable to open sprite\n");
         exit(84);
     }
     sfSprite_setTexture(sprite, texture, sfTrue);
@@ -51,7 +51,7 @@ sfFont *setfont(char *filepath)
     sfFont *savefile_font = sfFont_createFromFile(filepath);
 
     if (savefile_font == NULL) {
-        printf("%s: Unable to open font\n", filepath);
+        my_printf("%s: Unable to open font\n", filepath);
         exit(84);
     }
     return savefile_font;

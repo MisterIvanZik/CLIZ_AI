@@ -19,6 +19,15 @@ char *my_strncpy(char *dest, char *src, int n);
 int my_strlen(char *str);
 char *my_strdup(char *str1);
 int my_strcmp(char *str1, char *str2);
+void my_putchar(char c);
+int my_put_nbr(int nb);
+int my_putstr(char const *str);
+int my_unsigned_nbr(unsigned int nb);
+int my_intflags(char *format, va_list ap);
+int my_charflags(char *format, va_list ap);
+int my_strflags(char *format, va_list ap);
+int my_unsigned_int(char *format, va_list ap);
+int my_printf(char *format, ...);
 
 /* Fonctions de configuration graphique */
 sfVector2f set_window_size(sfVector2u windowSize, sfTexture *texture, sfSprite *sprite);
