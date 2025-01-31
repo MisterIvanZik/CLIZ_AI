@@ -117,7 +117,7 @@ char *getAiResponse(chatbot_t *interface, char *userInput)
         hash_insert(interface->responseCache, userInput, aiResponse);
         return aiResponse;
     } else {
-        printf("Désolé, je n'ai pas pu obtenir de réponse.\n");
+        my_printf("Désolé, je n'ai pas pu obtenir de réponse.\n");
         return NULL;
     }
 }

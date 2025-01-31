@@ -51,7 +51,7 @@ void load_users_from_file(cliz_t *cliz, const char *filename)
     FILE *file = fopen(filename, "r");
 
     if (file == NULL) {
-        printf("Erreur : impossible d'ouvrir le fichier %s\n", filename);
+        my_printf("Erreur : impossible d'ouvrir le fichier %s\n", filename);
         return;
     }
     if (name == NULL || email == NULL || password == NULL) {
@@ -62,7 +62,7 @@ void load_users_from_file(cliz_t *cliz, const char *filename)
     }
     while (fscanf(file, "%[^:]:%[^:]:%s\n", name, email, password) == 3) {
         if (add_node(&cliz->user_list, name, email, password) != 0) {
-            printf("Erreur : impossible d'ajouter l'utilisateur %s\n", name);
+            my_printf("Erreur : impossible d'ajouter l'utilisateur %s\n", name);
         }
     }
     fclose(file);

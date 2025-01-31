@@ -49,7 +49,9 @@ SRC = src/main.c                                \
 
 LIB = lib/set_functions.c                       \
       lib/create_functions.c                    \
-      lib/destroy_functions.c
+      lib/destroy_functions.c                   \
+      lib/my_printf/my_printf.c                 \
+      lib/my_printf/flags.c
 
 OBJ = $(SRC:.c=.o) $(LIB:.c=.o)
 

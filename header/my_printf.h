@@ -1,30 +1,32 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   includes.h                                                :+:       :+:    :+: :+:    :+:    :+:        */
+/*   my_printf.h                                               :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: ivan <ivan@myges.fr>                                +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2025/01/26 03:45:44 by ivan                  #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2025/01/26 14:42:51 by ivan                 ########## ########   ######## ###########         */
+/*   Created: 2025/01/31 11:33:21 by ivan                  #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2025/01/31 11:33:21 by ivan                 ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#ifndef INCLUDES_H_
-    #define INCLUDES_H_
-    /* Bibliothèques standards */
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include <unistd.h>
-    #include <stdbool.h>
-    #include <time.h>
-    #include <stdarg.h>
+#ifndef PTR_H
+    #define PTR_H
+    #include "includes.h"
+    #include "prototypes.h"
+    #define NB_FLAGS 5
 
-    /* Bibliothèques externes */
-    #include <SFML/Graphics.h>
-    #include <SFML/Audio.h>
-    #include <curl/curl.h>
-    #include <json-c/json.h>
+typedef struct ptr_fct {
+    char c;
+    int (*ptr)(char *format, va_list ap);
+} ptr_fct_t;
+
+static const ptr_fct_t array_fct[] = {
+    {'c', &my_charflags},
+    {'s', &my_strflags},
+    {'d', &my_intflags},
+    {'i', &my_intflags},
+    {'u', &my_unsigned_int},
+};
 
 #endif
