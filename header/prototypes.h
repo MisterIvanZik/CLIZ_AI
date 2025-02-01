@@ -102,11 +102,10 @@ char *extractAiResponse(char *data);
 char *getAiResponse(chatbot_t *interface, char *userInput);
 
 /* Table de hachage pour le cache */
-hash_table_t *hash_create(void);
-void hash_destroy(hash_table_t *table);
 unsigned int hash_function(const char *key);
-int hash_insert(hash_table_t *table, const char *question, const char *response);
-char *hash_search(hash_table_t *table, const char *question);
-void hash_cleanup(hash_table_t *table);
+hash_table_t *hash_create(void);
+int insert_elem(hash_table_t *table, const char *question, const char *response);
+char *search_elem(hash_table_t *table, const char *question);
+void hash_destroy(hash_table_t *table);
 
 #endif
