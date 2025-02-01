@@ -21,7 +21,7 @@ size_t callback(void *receivedData, size_t sizeOfOneElement, size_t numberOfElem
     *response_buffer->data = realloc(*response_buffer->data, *response_buffer->size + total_received_size + 1);
     if (*response_buffer->data == NULL)
         return 0;
-    memcpy(*response_buffer->data + *response_buffer->size, receivedData, total_received_size); // Copie des données reçues dans le buffer
+    memcpy(*response_buffer->data + *response_buffer->size, receivedData, total_received_size);
     *response_buffer->size += total_received_size;
     (*response_buffer->data)[*response_buffer->size] = '\0';
     return total_received_size;
@@ -39,7 +39,7 @@ char *prepareJsonPayload(CURL *curl, char *userInput)
              "\"messages\":["
              "{\"role\":\"system\",\"content\":\"Tu répondra le plus simplement possible sans donner trop de détails\"},"
              "{\"role\":\"user\",\"content\":\"%s\"}"
-             "]}"; // Formatage du corps de la requête
+             "]}";
     snprintf(buffer, 1000, template, MODEL, escapedInput);
     curl_free(escapedInput);
     return buffer;
@@ -48,7 +48,7 @@ char *prepareJsonPayload(CURL *curl, char *userInput)
 // Extrait la réponse de l'IA à partir des données JSON reçues
 char *extractAiResponse(char *data)
 {
-    json_object *json = json_tokener_parse(data); // Conversion des données JSON en objet JSON
+    json_object *json = json_tokener_parse(data);
     char *aiResponse = NULL;
 
     if (!json)
@@ -81,12 +81,10 @@ char *extractAiResponse(char *data)
 // Fonction principale pour interagir avec l'API
 char *getAiResponse(chatbot_t *interface, char *userInput)
 {
-    // Vérifier d'abord dans le cache
-    char *cached_response = hash_search(interface->responseCache, userInput);
+    char *cached_response = search_elem(interface->responseCache, userInput);
 
     if (cached_response != NULL)
-        return strdup(cached_response);  // Retourner une copie de la réponse du cache
-    // Si pas dans le cache, appeler l'API
+        return strdup(cached_response);
     CURL *curl = curl_easy_init(); // crée un objet CURL -> ouvrir un navigateur pour faire une requête à un site web
     char *data = NULL;
     size_t dataSize = 0;
@@ -113,8 +111,7 @@ char *getAiResponse(chatbot_t *interface, char *userInput)
     free(jsonPayload);
     free(data);
     if (aiResponse) {
-        // Stocker la réponse dans le cache avant de la retourner
-        hash_insert(interface->responseCache, userInput, aiResponse);
+        insert_elem(interface->responseCache, userInput, aiResponse); // stocker la réponse dans le cache
         return aiResponse;
     } else {
         my_printf("Désolé, je n'ai pas pu obtenir de réponse.\n");
