@@ -28,7 +28,7 @@ button_t *createButton(sfVector2f buttonPos, sfVector2f buttonSize, const char *
     button->textPos = (sfVector2f){buttonPos.x, buttonPos.y};
     sfText_setString(button->text, buttonName);
     sfText_setFont(button->text, SETFONT);
-    sfText_setCharacterSize(button->text, 24);
+    sfText_setCharacterSize(button->text, 22);
     sfText_setColor(button->text, buttonNameColor);
     sfText_setPosition(button->text, button->textPos);
     return button;

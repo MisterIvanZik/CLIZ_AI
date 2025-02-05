@@ -22,7 +22,7 @@
     /* Chemins des assets */
     #define LIGHT_HOMEPAGE "./assets/images/light_homepage.jpeg"
     #define DARK_HOMEPAGE "./assets/images/dark_homepage.jpeg"
-    #define LIGHT_LOGIN "./assets/images/light_login.jpg"
+    #define LIGHT_LOGIN "./assets/images/light_login.png"
     #define DARK_LOGIN "./assets/images/dark_login.png"
     #define LIGHT_SIGN_UP "./assets/images/light_sign_up.png"
     #define DARK_SIGN_UP "./assets/images/dark_sign_up.png"

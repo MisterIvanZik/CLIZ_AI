@@ -19,17 +19,15 @@ static void toggle_login_theme(login_t *login)
         login->iconTexture = settexture(MOON_ICON);
         sfText_setColor(login->email->text, sfBlack);
         sfText_setColor(login->password->text, sfBlack);
-        sfText_setPosition(login->message_text, (sfVector2f){670, 420});
-        sfText_setPosition(login->email->text, (sfVector2f){665, 480});
-        sfText_setPosition(login->password->text,(sfVector2f){665, 635});
+        sfText_setPosition(login->email->text, (sfVector2f){840, 227});
+        sfText_setPosition(login->password->text,(sfVector2f){840, 310});
     } else {
         login->backTexture = settexture(DARK_LOGIN);
         login->iconTexture = settexture(SUN_ICON);
         sfText_setColor(login->email->text, sfWhite);
         sfText_setColor(login->password->text, sfWhite);
-        sfText_setPosition(login->message_text, (sfVector2f){670, 465});
-        sfText_setPosition(login->email->text, (sfVector2f){675, 520});
-        sfText_setPosition(login->password->text, (sfVector2f){675, 625});
+        sfText_setPosition(login->email->text, (sfVector2f){840, 227});
+        sfText_setPosition(login->password->text, (sfVector2f){840, 310});
     }
     sfSprite_setTexture(login->backSprite, login->backTexture, sfTrue);
     sfSprite_setTexture(login->iconSprite, login->iconTexture, sfTrue);
@@ -58,8 +56,8 @@ static void handle_login_mouse_events(cliz_t *cliz, sfEvent event)
             cliz->login->is_email_selected = false;
         } else if (sfFloatRect_contains(&iconBounds, MOUSE_POS.x, MOUSE_POS.y)) {
             toggle_login_theme(cliz->login);
-        } else if (MOUSE_POS.x >= 640 && MOUSE_POS.x <= 1260 &&
-            MOUSE_POS.y >= 750 && MOUSE_POS.y <= 825) {
+        } else if (MOUSE_POS.x >= 830 && MOUSE_POS.x <= 1080 &&
+            MOUSE_POS.y >= 365 && MOUSE_POS.y <= 393) {
                 check_login_user(cliz);
         }
     }

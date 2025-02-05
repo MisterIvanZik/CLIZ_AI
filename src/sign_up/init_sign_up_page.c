@@ -47,10 +47,10 @@ sign_up_t *init_sign_up_page(sign_up_t *sign_up, sfVector2u window_size)
     sign_up->iconSprite = setsprite(sign_up->iconTexture);
     sign_up->iconPos = (sfVector2f){1800, 40};
     sfSprite_setPosition(sign_up->iconSprite, sign_up->iconPos);
-    sign_up->name = createButton((sfVector2f){750, 410}, (sfVector2f){440, 65}, "Username", sfBlack);
-    sign_up->email = createButton((sfVector2f){750, 530}, (sfVector2f){440, 65}, "Email", sfBlack);
-    sign_up->password = createButton((sfVector2f){750, 615}, (sfVector2f){440, 65}, "Password", sfBlack);
-    sign_up->message_text = createText("", 15, (sfVector2f){755, 375}, sfRed);
+    sign_up->email = createButton((sfVector2f){1265, 195}, (sfVector2f){440, 65}, "Email", sfBlack);
+    sign_up->password = createButton((sfVector2f){1265, 280}, (sfVector2f){440, 65}, "Password", sfBlack);
+    sign_up->name = createButton((sfVector2f){1265, 415}, (sfVector2f){440, 65}, "Username", sfBlack);
+    sign_up->message_text = createText("", 15, (sfVector2f){1265, 145}, sfRed);
     sign_up->user = init_user();
     if (sign_up->user == NULL) {
         free(sign_up);
