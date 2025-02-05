@@ -28,7 +28,7 @@
     #define DARK_SIGN_UP "./assets/images/dark_sign_up.png"
     #define MOON_ICON "./assets/images/moon_icon.png"
     #define SUN_ICON "./assets/images/sun_icon.png"
-    #define FONT "./assets/fonts/InterVariable.ttf"
+    #define FONT "./assets/fonts/noto.ttf"
     #define SETFONT setfont(FONT)
 
     /* Constantes du chatbot */
