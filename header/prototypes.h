@@ -15,6 +15,10 @@
     #include "struct.h"
 
 /* Utilitaires */
+int has_upper(char *str);
+int has_lower(char *str);
+int has_digit(char *str);
+int has_special(char *str);
 char *my_strncpy(char *dest, char *src, int n);
 int my_strlen(char *str);
 char *my_strdup(char *str1);

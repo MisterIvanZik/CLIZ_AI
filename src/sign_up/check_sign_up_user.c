@@ -12,21 +12,71 @@
 
 #include "prototypes.h"
 
-static int validate_sign_up_fields(user_t *user, sfText *message_text)
+static int validate_email_domain(char *email, sfText *message_text)
 {
-    if (strlen(user->name) == 0 || strlen(user->email) == 0 || strlen(user->password) == 0) {
-        sfText_setString(message_text, "*Tous les champs doivent être remplis");
+    char *at = strchr(email, '@');
+    char *domain = at + 1;
+    char *dot = strchr(domain, '.');
+    size_t domain_len = my_strlen(domain);
+    size_t tld_len = my_strlen(dot + 1);
+
+    if (!email || !message_text) {
         return 1;
     }
-    if (!strchr(user->email, '@')) {
-        sfText_setString(message_text, "*Email invalide");
+    if (!at) {
+        sfText_setString(message_text, "*Email invalide : @ manquant");
         return 1;
     }
-    if (strlen(user->password) < 8) {
-        sfText_setString(message_text, "*Le mot de passe doit contenir au moins 8 caractères");
+    if (!*domain) {
+        sfText_setString(message_text, "*Email invalide : domaine manquant");
+        return 1;
+    }
+    if (!dot || dot == domain || !*(dot + 1)) {
+        sfText_setString(message_text, "Le domaine de l'email est invalide");
+        return 1;
+    }
+    if (domain_len < 3 || tld_len < 2) {
+        sfText_setString(message_text, "Le domaine de l'email est invalide");
         return 1;
     }
     return 0;
+}
+
+static int validate_password_strength(char *password, sfText *message_text)
+{
+    if (my_strlen(password) < 8) {
+        sfText_setString(message_text, "Le mot de passe doit contenir au moins 8 caractères");
+        return 1;
+    }
+    if (!has_upper(password)) {
+        sfText_setString(message_text, "*Le mot de passe doit contenir au moins une lettre majuscule");
+        return 1;
+    }
+    if (!has_lower(password)) {
+        sfText_setString(message_text, "*Le mot de passe doit contenir au moins une lettre minuscule");
+        return 1;
+    }
+    if (!has_digit(password)) {
+        sfText_setString(message_text, "*Le mot de passe doit contenir au moins un chiffre");
+        return 1;
+    }
+    if (!has_special(password)) {
+        sfText_setString(message_text, "*Le mot de passe doit contenir au moins un caractère spécial");
+        return 1;
+    }
+    return 0;
+}
+
+static int validate_sign_up_fields(user_t *user, sfText *message_text)
+{
+    if (my_strlen(user->name) == 0 || my_strlen(user->email) == 0 || my_strlen(user->password) == 0) {
+        sfText_setString(message_text, "*Tous les champs doivent être remplis");
+        return 1;
+    }
+    if (validate_email_domain(user->email, message_text)) {
+        return 1;
+    }
+    return validate_password_strength(user->password, message_text);
 }
 
 static int add_new_user(FILE *file, cliz_t *cliz)
