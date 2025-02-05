@@ -1,62 +1,130 @@
 # Documentation pour notre Projet CLIZ_AI
 
 ## Aperçu du Projet
-Ce projet est une application complète conçue pour offrir une interface utilisateur conviviale pour gérer et interagir avec diverses fonctionnalités. Il comprend des composants pour chatbot, page d'accueil, connexion, inscription et gestion de la fenêtre.
+CLIZ_AI est une application de chatbot intelligente qui combine une interface graphique moderne avec des modèles d'IA avancés. Elle offre une expérience utilisateur complète avec authentification, personnalisation et interaction en temps réel.
 
 ## Description du Projet
-Le projet CLIZ_AI est une application web complète qui offre une interface utilisateur intuitive pour gérer et interagir avec diverses fonctionnalités. Il est conçu pour faciliter l'interaction avec un chatbot, une page d'accueil, une gestion de connexion, une inscription et la gestion de la fenêtre de l'application.
+Le projet CLIZ_AI est une application en C qui propose une interface chatbot sophistiquée avec plusieurs modèles d'IA au choix. L'application intègre un système d'authentification complet, un thème clair/sombre, et une gestion efficace des ressources grâce à un système de cache intelligent.
 
 ## Fonctionnalités Principales
-- **Chatbot** : Interface de chatbot pour l'interaction utilisateur.
-- **Page d'accueil** : Interface principale de l'application.
-- **Connexion** : Gestion de la fonctionnalité de connexion.
-- **Inscription** : Gestion du processus d'inscription des utilisateurs.
-- **Gestion de la fenêtre** : Gestion de la fenêtre de l'application et ses événements.
+### Interface Utilisateur
+- Interface graphique fluide et responsive avec CSFML
+- Support des thèmes clair/sombre avec basculement en temps réel
+- Menu de sélection de modèles d'IA (Qwen, Mistral, Llama)
+- Système de scroll pour l'historique des messages
 
-## Technologies Utilisées
-- **Langages de programmation** : C.
-- **Bibliothèques** : Csfml, Curl, Json.
-- **Outils** : Github, Trello, Miro, VSCode.
+### Chatbot
+- Trois modèles d'IA au choix :
+  - Qwen 2.5 Coder
+  - Mistral v0.3
+  - Llama 3.2
+- Système de cache pour optimiser les réponses fréquentes
+- Limite de taille de messages pour une meilleure expérience
+
+### Système d'Authentification
+- Inscription sécurisée des utilisateurs
+- Connexion avec email et mot de passe
+- Gestion des sessions utilisateur
+- Stockage sécurisé des données utilisateur
+
+## Technologies et Architecture
+### Technologies Utilisées
+- **Langage** : C
+- **Interface Graphique** : CSFML (Simple and Fast Multimedia Library pour C)
+- **Gestion API** : libcurl
+- **Traitement JSON** : json-c
+- **Outils** :
+  - Github : Gestion de version
+  - Trello : Gestion de projet
+  - Miro : Design et planification
+  - VSCode : Développement
+
+### Architecture du Projet
+```
+CLIZ_AI/
+├── assets/            # Ressources graphiques et polices
+├── header/           # Fichiers d'en-tête (.h)
+├── lib/             # Bibliothèques et utilitaires
+├── src/             # Code source
+│   ├── chatbot/    # Logique du chatbot et API
+│   ├── homepage/   # Interface d'accueil
+│   ├── login/      # Système de connexion
+│   ├── sign_up/    # Système d'inscription
+│   └── window/     # Gestion des fenêtres
+└── tests/          # Tests unitaires
+```
 
 ## Installation et Configuration
-Pour installer et configurer le projet, vous devez :
-1. Cloner le dépôt sur votre machine :
-`git clone https://github.com/MisterIvanZik/CLIZ_AI.git`
+### Prérequis
+- GCC
+- Make
+- CSFML
+- libcurl
+- json-c
 
-`cd CLIZ_AI`
-2. Installer les dépendances en exécutant :
-`sudo apt-get update`
+### Installation
+1. Cloner le dépôt :
+\`\`\`bash
+git clone https://github.com/MisterIvanZik/CLIZ_AI.git
+cd CLIZ_AI
+\`\`\`
 
-`sudo apt-get install libcsfml-dev libcurl4-openssl-dev libjson-c-dev`
-3. Configurer la base de données en modifiant le fichier `database.txt`.
-4. Lancer l'application en exécutant :
-`make`
+2. Installer les dépendances :
+\`\`\`bash
+sudo apt-get update
+sudo apt-get install libcsfml-dev libcurl4-openssl-dev libjson-c-dev
+\`\`\`
 
-`./cliz_ai`
+3. Compiler le projet :
+\`\`\`bash
+make
+\`\`\`
 
-## Utilisation
-Pour utiliser l'application, vous pouvez :
-- Interagir avec le chatbot en utilisant la page d'accueil.
-- Se connecter ou s'inscrire à l'aide des fonctionnalités de connexion et d'inscription.
-- Gérer la fenêtre de l'application en utilisant les événements spécifiques.
+4. Lancer l'application :
+\`\`\`bash
+./cliz_ai
+\`\`\`
 
-## Structure du Projet
-Le projet est organisé en plusieurs dossiers et fichiers :
-- **assets** : Contient des images, des polices et autres ressources utilisées dans l'application.
-- **header** : Inclut des fichiers de tête pour le projet.
-- **lib** : Contient des fichiers de bibliothèque pour des fonctions et des utilitaires.
-- **Makefile** : Définit le processus de construction pour le projet.
-- **README.md** : Ce fichier, fournissant une documentation pour le projet.
-- **src** : Contient des fichiers de code source pour les différents composants de l'application.
+## Configuration Avancée
+### Variables d'Environnement
+- `API_KEY` : Clé d'API pour les modèles d'IA (définie dans defines.h)
+- `API_BASE` : URL de base de l'API (définie dans defines.h)
 
-### Détails Techniques de l'IA
-- **URL de l'API** : `https://glhf.chat/api/openai/v1`
-- **Modèle Utilisé** : Qwen2.5-7B-Instruct
-- **Clé d'API** : La clé d'API est stockée dans le fichier `defines.h` et est utilisée pour authentifier les requêtes à l'API.
+### Personnalisation
+- Modification des thèmes dans les assets
+- Configuration des modèles dans defines.h
+- Ajustement des paramètres de cache dans defines.h
 
-## Auteurs
+## Performance et Optimisation
+### Système de Cache
+- Taille du cache : 100 entrées
+- Table de hachage optimisée pour les accès rapides
+
+### Gestion de la Mémoire
+- Destruction propre des ressources
+- Gestion des fuites mémoire avec Valgrind
+- Support de l'Address Sanitizer (ASAN)
+
+## Tests et Débogage
+### Tests Unitaires
+- Framework de test : Criterion
+- Coverage avec gcovr
+- Tests automatisés pour les fonctions utilitaires
+
+### Outils de Débogage
+- Support Valgrind : `make debug_valgrind`
+- Support ASAN : `make debug_asan`
+- Tests unitaires : `make tests_run`
+
+## Standards de Code
+- Style de code normalisé
+- Documentation des fonctions
+- Gestion des erreurs systématique
+- Noms de variables et fonctions explicites
+
+## Auteurs et Contact
 - Ivan Zazic
 - Clara Lisika
 
-## Contact
-Pour toute demande ou feedback, veuillez contacter le mainteneur du projet à zazicivan@gmail.com.
+Pour toute question ou retour :
+- Email : zazicivan@gmail.com

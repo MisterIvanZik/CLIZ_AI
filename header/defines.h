@@ -48,6 +48,5 @@
 
     /* Constantes de la table de hachage */
     #define HASH_SIZE 100
-    #define CACHE_EXPIRATION 3600
 
 #endif
