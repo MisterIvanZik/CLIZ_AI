@@ -153,6 +153,9 @@ typedef struct chatbot_s {
     sfText *sendButtonText;
     int scroll;
     hash_table_t *responseCache;
+    sfText *modelTexts[3];
+    sfRectangleShape *modelBackground[3];
+    int selectedModel;
 } chatbot_t;
 
 #endif

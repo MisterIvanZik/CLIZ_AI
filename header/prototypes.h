@@ -80,6 +80,13 @@ void draw_chatbot(chatbot_t *interface);
 input_t create_input_box(sfFont *font);
 void handle_text_input(chatbot_t *interface, sfEvent event);
 
+/* Menu de sélection de modèle */
+sfText *create_model_text(sfFont *font, int index, const char *modelName);
+sfRectangleShape *create_model_background(int index, sfBool isSelected);
+void init_model_menu(chatbot_t *interface);
+void handle_model_selection(chatbot_t *interface, sfVector2i mousePos);
+void handle_main_controls(chatbot_t *interface, sfVector2i mousePos);
+
 /* Gestion des événements du chatbot */
 void handle_mouse_click(chatbot_t *interface, sfVector2i mousePos);
 void handle_key_press(chatbot_t *interface, sfKeyCode key);
@@ -98,7 +105,7 @@ void draw_messages(chatbot_t *ai);
 
 /* API et traitement des réponses */
 size_t callback(void *receivedData, size_t sizeOfOneElement, size_t numberOfElements, void *userData);
-char *prepareJsonPayload(CURL *curl, char *userInput);
+char *prepareJsonPayload(chatbot_t *interface, CURL *curl, char *userInput);
 char *extractAiResponse(char *data);
 char *getAiResponse(chatbot_t *interface, char *userInput);
 
