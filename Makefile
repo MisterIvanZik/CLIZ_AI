@@ -44,6 +44,7 @@ SRC = src/main.c                                \
       src/chatbot/interface/init.c              \
       src/chatbot/interface/draw.c              \
       src/chatbot/interface/input.c             \
+      src/chatbot/interface/model_menu.c        \
       src/chatbot/utils.c                       \
       src/chatbot/data_structures/hash_table.c
 

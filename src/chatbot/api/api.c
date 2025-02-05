@@ -28,10 +28,11 @@ size_t callback(void *receivedData, size_t sizeOfOneElement, size_t numberOfElem
 }
 
 // Prépare le corps de la requête JSON à envoyer à l'API
-char *prepareJsonPayload(CURL *curl, char *userInput)
+char *prepareJsonPayload(chatbot_t *interface, CURL *curl, char *userInput)
 {
     char *escapedInput = curl_easy_escape(curl, userInput, 0);
     char *buffer = malloc(my_strlen(escapedInput) + 1000);
+    char *selectedModel = NULL;
 
     if (escapedInput == NULL || buffer == NULL)
         return NULL;
@@ -40,7 +41,17 @@ char *prepareJsonPayload(CURL *curl, char *userInput)
              "{\"role\":\"system\",\"content\":\"Tu répondra le plus simplement possible sans donner trop de détails\"},"
              "{\"role\":\"user\",\"content\":\"%s\"}"
              "]}";
-    snprintf(buffer, 1000, template, MODEL, escapedInput);
+    switch(interface->selectedModel) {
+        case 1:
+            selectedModel = MODEL2;
+            break;
+        case 2:
+            selectedModel = MODEL3;
+            break;
+        default:
+            selectedModel = MODEL1;
+    }
+    snprintf(buffer, 1000, template, selectedModel, escapedInput);
     curl_free(escapedInput);
     return buffer;
 }
@@ -89,7 +100,7 @@ char *getAiResponse(chatbot_t *interface, char *userInput)
     char *data = NULL;
     size_t dataSize = 0;
     api_t response = {&data, &dataSize};
-    char *jsonPayload = prepareJsonPayload(curl, userInput);
+    char *jsonPayload = prepareJsonPayload(interface, curl, userInput);
     struct curl_slist *httpHeaders = NULL;
     char *aiResponse = NULL;
     CURLcode curlResult;

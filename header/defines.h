@@ -37,7 +37,9 @@
     #define KEY_DELETE '\b'
     #define API_KEY "glhf_bb498ff02a2a44460700746943cb0afd"
     #define API_BASE "https://glhf.chat/api/openai/v1"
-    #define MODEL "hf:Qwen/Qwen2.5-7B-Instruct"
+    #define MODEL1 "hf:Qwen/Qwen2.5-Coder-32B-Instruct"
+    #define MODEL2 "hf:mistralai/Mistral-7B-Instruct-v0.3"
+    #define MODEL3 "hf:meta-llama/Llama-3.2-3B-Instruct"
 
     /* Tailles des buffers */
     #define NAME_BUFFER 50

@@ -12,7 +12,7 @@
 
 #include "prototypes.h"
 
-void handle_mouse_click(chatbot_t *interface, sfVector2i mousePos)
+void handle_main_controls(chatbot_t *interface, sfVector2i mousePos)
 {
     sfFloatRect inputBounds = sfRectangleShape_getGlobalBounds(interface->input.background);
     sfFloatRect buttonBounds = sfRectangleShape_getGlobalBounds(interface->sendButton);
@@ -23,6 +23,12 @@ void handle_mouse_click(chatbot_t *interface, sfVector2i mousePos)
         send_message(interface);
     else
         interface->input.isActive = sfFalse;
+}
+
+void handle_mouse_click(chatbot_t *interface, sfVector2i mousePos)
+{
+    handle_model_selection(interface, mousePos);
+    handle_main_controls(interface, mousePos);
 }
 
 void handle_key_press(chatbot_t *interface, sfKeyCode key)
@@ -37,18 +43,20 @@ void handle_key_press(chatbot_t *interface, sfKeyCode key)
 
 void handle_scroll(chatbot_t *interface, sfEvent event)
 {
+    float messagesHeight = 0;
+    sfText *text;
+
     if (event.mouseWheelScroll.wheel == sfMouseVerticalWheel) {
-        float messagesHeight = 0;
-        sfText *text = sfText_create();
+        messagesHeight = 0;
+        text = sfText_create();
         sfText_setFont(text, interface->font);
         sfText_setCharacterSize(text, 18);
         for (int i = 0; i < interface->messageCount; i++)
             messagesHeight += calculate_message_height(text, interface->messages[i].content);
         sfText_destroy(text);
         interface->scroll -= event.mouseWheelScroll.delta * 20;
-        if (interface->scroll < 0) {
+        if (interface->scroll < 0)
             interface->scroll = 0;
-        }
     }
 }
 
