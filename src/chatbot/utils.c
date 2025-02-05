@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "prototypes.h"
+#include "../../header/prototypes.h"
 
 char *my_strncpy(char *dest, char *src, int n)
 {

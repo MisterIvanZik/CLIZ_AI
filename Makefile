@@ -86,3 +86,9 @@ debug_asan: LDFLAGS += -fsanitize=address
 debug_asan: fclean all
 
 re: fclean all
+
+tests_run:
+	gcc -o unit_tests tests/unit_tests.c src/chatbot/utils.c lib/my_printf/*.c    \
+	-lcriterion --coverage -L.
+	./unit_tests
+	gcovr

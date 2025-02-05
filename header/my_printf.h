@@ -14,7 +14,7 @@
     #define PTR_H
     #include "includes.h"
     #include "prototypes.h"
-    #define NB_FLAGS 5
+    #define NB_FLAGS 6
 
 typedef struct ptr_fct {
     char c;
@@ -27,6 +27,7 @@ static const ptr_fct_t array_fct[] = {
     {'d', &my_intflags},
     {'i', &my_intflags},
     {'u', &my_unsigned_int},
+    {'%', &my_percent_flag},
 };
 
 #endif

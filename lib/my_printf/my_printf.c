@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "my_printf.h"
+#include "../../header/my_printf.h"
 
 void my_getflags(char flg, va_list ap, char *format)
 {
@@ -35,7 +35,6 @@ int my_printf(char *format, ...)
             my_putchar(format[i]);
         }
     }
-    my_putchar('\n');
     va_end(ap);
     return (0);
 }
