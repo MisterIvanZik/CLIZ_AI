@@ -27,6 +27,7 @@ int my_intflags(char *format, va_list ap);
 int my_charflags(char *format, va_list ap);
 int my_strflags(char *format, va_list ap);
 int my_unsigned_int(char *format, va_list ap);
+int my_percent_flag(char *format, va_list ap);
 int my_printf(char *format, ...);
 
 /* Fonctions de configuration graphique */

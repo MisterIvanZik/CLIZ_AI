@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "my_printf.h"
+#include "../../header/my_printf.h"
 
 void my_putchar(char c)
 {
@@ -19,19 +19,21 @@ void my_putchar(char c)
 
 int my_put_nbr(int nb)
 {
+    if (nb == -2147483648) {
+        my_putstr("-2147483648");
+        return (0);
+    }
     if (nb < 0) {
         my_putchar('-');
         nb = -nb;
     }
     if (nb < 10) {
-        my_putchar(nb + 48);
-    }
-    if (nb >= 10) {
+        my_putchar(nb + '0');
+    } else {
         my_put_nbr(nb / 10);
-        nb = nb % 10;
-        my_putchar(nb % 10 + 48);
+        my_putchar((nb % 10) + '0');
     }
-    return (nb);
+    return (0);
 }
 
 int my_putstr(char const *str)
@@ -47,49 +49,41 @@ int my_putstr(char const *str)
 
 int my_unsigned_nbr(unsigned int nb)
 {
-    if (nb < 0) {
-        my_putchar('-');
-        nb = -nb;
-    }
     if (nb < 10) {
-        my_putchar(nb + 48);
-    }
-    if (nb >= 10) {
+        my_putchar(nb + '0');
+    } else {
         my_unsigned_nbr(nb / 10);
-        nb = nb % 10;
-        my_putchar(nb % 10 + 48);
+        my_putchar((nb % 10) + '0');
     }
-    return (nb);
+    return (0);
 }
 
 int my_intflags(char *format, va_list ap)
 {
-    int i = i + 1;
-
     my_put_nbr(va_arg(ap, int));
     return (0);
 }
 
 int my_charflags(char *format, va_list ap)
 {
-    int i = i + 1;
-
     my_putchar(va_arg(ap, int));
     return (0);
 }
 
 int my_strflags(char *format, va_list ap)
 {
-    int i = i + 1;
-
     my_putstr(va_arg(ap, char *));
     return (0);
 }
 
 int my_unsigned_int(char *format, va_list ap)
 {
-    int i = i + 1;
+    my_unsigned_nbr(va_arg(ap, unsigned int));
+    return (0);
+}
 
-    my_unsigned_nbr(va_arg(ap, int));
+int my_percent_flag(char *format, va_list ap)
+{
+    my_putchar('%');
     return (0);
 }
