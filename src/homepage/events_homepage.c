@@ -43,13 +43,13 @@ static int get_clicked_button(sfVector2i mouse_pos, Switch_Page *clicked_button,
         *clicked_button = CHATBOT_PAGE;
         return 1;
     }
-    if (mouse_pos.x >= 830 && mouse_pos.x <= 1092 &&
-        mouse_pos.y >= 775 && mouse_pos.y <= 875) {
+    if (mouse_pos.x >= 787 && mouse_pos.x <= 1129 &&
+        mouse_pos.y >= 530 && mouse_pos.y <= 574) {
         *clicked_button = SIGN_UP_PAGE;
         return 1;
     }
-    if (mouse_pos.x >= 1180 && mouse_pos.x <= 1430 &&
-        mouse_pos.y >= 775 && mouse_pos.y <= 875) {
+    if (mouse_pos.x >= 788 && mouse_pos.x <= 1128 &&
+        mouse_pos.y >= 604 && mouse_pos.y <= 647) {
         *clicked_button = LOGIN_PAGE;
         return 1;
     }

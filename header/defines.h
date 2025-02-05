@@ -20,8 +20,8 @@
     #define MOUSE_POS sfMouse_getPositionRenderWindow(WINDOW)
 
     /* Chemins des assets */
-    #define LIGHT_HOMEPAGE "./assets/images/light_homepage.jpeg"
-    #define DARK_HOMEPAGE "./assets/images/dark_homepage.jpeg"
+    #define LIGHT_HOMEPAGE "./assets/images/home_page_light.png"
+    #define DARK_HOMEPAGE "./assets/images/home_page_dark.png"
     #define LIGHT_LOGIN "./assets/images/light_login.png"
     #define DARK_LOGIN "./assets/images/dark_login.png"
     #define LIGHT_SIGN_UP "./assets/images/light_sign_up.png"
