@@ -20,6 +20,7 @@
     #include <stdbool.h>
     #include <time.h>
     #include <stdarg.h>
+    #include <ctype.h>
 
     /* Bibliothèques externes */
     #include <SFML/Graphics.h>
