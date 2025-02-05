@@ -56,8 +56,8 @@ static void handle_login_mouse_events(cliz_t *cliz, sfEvent event)
             cliz->login->is_email_selected = false;
         } else if (sfFloatRect_contains(&iconBounds, MOUSE_POS.x, MOUSE_POS.y)) {
             toggle_login_theme(cliz->login);
-        } else if (MOUSE_POS.x >= 830 && MOUSE_POS.x <= 1080 &&
-            MOUSE_POS.y >= 365 && MOUSE_POS.y <= 393) {
+        } else if (MOUSE_POS.x >= 810 && MOUSE_POS.x <= 1105 &&
+            MOUSE_POS.y >= 360 && MOUSE_POS.y <= 395) {
                 check_login_user(cliz);
         }
     }
