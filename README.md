@@ -64,26 +64,26 @@ CLIZ_AI/
 
 ### Installation
 1. Cloner le dépôt :
-\`\`\`bash
+```
 git clone https://github.com/MisterIvanZik/CLIZ_AI.git
 cd CLIZ_AI
-\`\`\`
+```
 
 2. Installer les dépendances :
-\`\`\`bash
+```
 sudo apt-get update
 sudo apt-get install libcsfml-dev libcurl4-openssl-dev libjson-c-dev
-\`\`\`
+```
 
 3. Compiler le projet :
-\`\`\`bash
+```
 make
-\`\`\`
+```
 
 4. Lancer l'application :
-\`\`\`bash
+```
 ./cliz_ai
-\`\`\`
+```
 
 ## Configuration Avancée
 ### Variables d'Environnement
