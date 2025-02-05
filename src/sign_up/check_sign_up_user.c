@@ -14,19 +14,22 @@
 
 static int validate_email_domain(char *email, sfText *message_text)
 {
-    char *at = strchr(email, '@');
-    char *domain = at + 1;
-    char *dot = strchr(domain, '.');
-    size_t domain_len = my_strlen(domain);
-    size_t tld_len = my_strlen(dot + 1);
+    char *at;
+    char *domain;
+    char *dot;
+    size_t domain_len;
+    size_t tld_len;
 
     if (!email || !message_text) {
         return 1;
     }
+    at = strchr(email, '@');
     if (!at) {
         sfText_setString(message_text, "*Email invalide : @ manquant");
         return 1;
     }
+    domain = at + 1;
+    dot = strchr(domain, '.');
     if (!*domain) {
         sfText_setString(message_text, "*Email invalide : domaine manquant");
         return 1;
@@ -35,6 +38,8 @@ static int validate_email_domain(char *email, sfText *message_text)
         sfText_setString(message_text, "Le domaine de l'email est invalide");
         return 1;
     }
+    domain_len = my_strlen(domain);
+    tld_len = my_strlen(dot + 1);
     if (domain_len < 3 || tld_len < 2) {
         sfText_setString(message_text, "Le domaine de l'email est invalide");
         return 1;

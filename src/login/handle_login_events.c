@@ -19,15 +19,15 @@ static void toggle_login_theme(login_t *login)
         login->iconTexture = settexture(MOON_ICON);
         sfText_setColor(login->email->text, sfBlack);
         sfText_setColor(login->password->text, sfBlack);
-        sfText_setPosition(login->email->text, (sfVector2f){840, 227});
-        sfText_setPosition(login->password->text,(sfVector2f){840, 310});
+        sfText_setPosition(login->email->text, (sfVector2f){815, 228});
+        sfText_setPosition(login->password->text,(sfVector2f){815, 310});
     } else {
         login->backTexture = settexture(DARK_LOGIN);
         login->iconTexture = settexture(SUN_ICON);
         sfText_setColor(login->email->text, sfWhite);
         sfText_setColor(login->password->text, sfWhite);
-        sfText_setPosition(login->email->text, (sfVector2f){840, 227});
-        sfText_setPosition(login->password->text, (sfVector2f){840, 310});
+        sfText_setPosition(login->email->text, (sfVector2f){830, 228});
+        sfText_setPosition(login->password->text, (sfVector2f){830, 310});
     }
     sfSprite_setTexture(login->backSprite, login->backTexture, sfTrue);
     sfSprite_setTexture(login->iconSprite, login->iconTexture, sfTrue);
