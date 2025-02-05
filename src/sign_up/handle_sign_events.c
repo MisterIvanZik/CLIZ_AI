@@ -63,7 +63,6 @@ static void handle_sign_mouse_events(cliz_t *cliz, sfEvent event)
     sfFloatRect iconBounds = sfSprite_getGlobalBounds(cliz->login->iconSprite);
 
     if (event.type == sfEvtMouseButtonPressed) {
-        my_printf("Clic à la position : x = %d, y = %d\n", (int)MOUSE_POS.x, (int)MOUSE_POS.y);
         if (sfFloatRect_contains(&select_name, MOUSE_POS.x, MOUSE_POS.y)) {
             cliz->sign->is_name_selected = true;
             cliz->sign->is_email_selected = false;
